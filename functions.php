@@ -36,14 +36,18 @@ function custom_excerpt_length( $length ) {
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
 /**
- * Calculate reading time based on content.
+ * Get the estimated reading time for a post.
  *
- * @param int $post_id The ID of the post.
- * @return string The estimated reading time.
+ * @param int|null $post_id The ID of the post. Defaults to the current post.
+ * @return string The estimated reading time in the format "X min read".
  */
-function custom_calculate_reading_time( $post_id ) {
+function gp_get_reading_time( $post_id = null ) {
+    if ( ! $post_id ) {
+        $post_id = get_the_ID();
+    }
     $content = get_post_field( 'post_content', $post_id );
     $word_count = str_word_count( strip_tags( $content ) );
-    $reading_time = ceil( $word_count / 200 ); // 200 words per minute
+    $reading_time = ceil( $word_count / 225 ); // Based on includes/post-features.php
+    $reading_time = max( 1, $reading_time );
     return $reading_time . ' min read';
 }

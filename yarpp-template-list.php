@@ -22,7 +22,7 @@ Author: Jules
                     <span class="yarpp-post-title"><?php the_title(); ?></span>
                     <div class="yarpp-post-meta">
                         <span class="yarpp-post-date"><?php echo get_the_date(); ?></span>
-                        <span class="yarpp-reading-time"><?php echo custom_calculate_reading_time( get_the_ID() ); ?></span>
+                        <span class="yarpp-reading-time"><?php echo gp_get_reading_time( get_the_ID() ); ?></span>
                         <div class="yarpp-post-terms">
                             <span class="yarpp-post-categories"><?php the_category(', '); ?></span>
                             <span class="yarpp-post-tags"><?php the_tags('', ', ', ''); ?></span>

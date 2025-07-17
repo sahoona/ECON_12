@@ -192,10 +192,10 @@ function gp_meta_after_title() {
 
     $author_display_name = get_the_author_meta('display_name', $post->post_author);
     $is_updated = get_the_modified_time('U') > get_the_time('U') + DAY_IN_SECONDS;
-    $content = strip_tags($post->post_content);
-    $word_count = count(preg_split('/\s+/', trim($content), -1, PREG_SPLIT_NO_EMPTY));
-    $calculated_reading_time = ceil($word_count / 225);
-    $reading_time = max(1, $calculated_reading_time);
+    $reading_time_text = gp_get_reading_time( $post->ID );
+    preg_match('/(\d+)/', $reading_time_text, $matches);
+    $reading_time = isset($matches[1]) ? $matches[1] : 1;
+    $word_count = str_word_count(strip_tags($post->post_content)); // for tooltip
 
     echo "<!-- GP_DEBUG: Post ID {$post->ID}, Word Count: {$word_count}, Reading Time: {$reading_time} min -->";
     ?>
