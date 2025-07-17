@@ -156,12 +156,9 @@
     align-items: center;
 }
 
-.gp-toc-show-more-button {
-    flex-direction: column;
-}
-
+.gp-toc-show-more-button,
 .gp-toc-hide-button {
-    flex-direction: column-reverse;
+    flex-direction: column;
 }
 
 .gp-toc-show-more-button .arrow-wrapper,
