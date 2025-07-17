@@ -110,25 +110,77 @@ function gp_customize_register_ad_settings( $wp_customize ) {
         'priority' => 180,
     ) );
 
+    // Ad Client ID
+    $wp_customize->add_setting( 'econarc_ad_client', array(
+        'type'              => 'theme_mod',
+        'capability'        => 'edit_theme_options',
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'econarc_ad_client_control', array(
+        'label'    => __( '애드센스 클라이언트 ID (ca-pub-xxxxxxxxxxxxxxxx)', 'gp_child_theme' ),
+        'section'  => 'gp_ad_settings_section',
+        'settings' => 'econarc_ad_client',
+        'type'     => 'text',
+    ) );
+
+    // In-content Ad Slot ID
+    $wp_customize->add_setting( 'econarc_ad_slot', array(
+        'type'              => 'theme_mod',
+        'capability'        => 'edit_theme_options',
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'econarc_ad_slot_control', array(
+        'label'    => __( '본문 내 광고 슬롯 ID', 'gp_child_theme' ),
+        'section'  => 'gp_ad_settings_section',
+        'settings' => 'econarc_ad_slot',
+        'type'     => 'text',
+    ) );
+
+    // Top Ad (Header) Slot ID
+    $wp_customize->add_setting( 'econarc_top_ad_slot', array(
+        'type'              => 'theme_mod',
+        'capability'        => 'edit_theme_options',
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'econarc_top_ad_slot_control', array(
+        'label'    => __( '상단 광고 슬롯 ID', 'gp_child_theme' ),
+        'section'  => 'gp_ad_settings_section',
+        'settings' => 'econarc_top_ad_slot',
+        'type'     => 'text',
+    ) );
+
+    // In-feed Ad Slot ID
+    $wp_customize->add_setting( 'econarc_infeed_ad_slot', array(
+        'type'              => 'theme_mod',
+        'capability'        => 'edit_theme_options',
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'econarc_infeed_ad_slot_control', array(
+        'label'    => __( '인피드 광고 슬롯 ID', 'gp_child_theme' ),
+        'section'  => 'gp_ad_settings_section',
+        'settings' => 'econarc_infeed_ad_slot',
+        'type'     => 'text',
+    ) );
+
     $ad_locations = [
-        'ad_after_header' => '헤더 아래 광고',
-        'ad_before_title' => '제목 위 광고',
-        'ad_in_content' => '본문 중간 광고',
-        'ad_before_footer' => '푸터 위 광고',
-        'ad_sidebar_left' => '왼쪽 사이드바 광고',
-        'ad_sidebar_right' => '오른쪽 사이드바 광고',
-        'ad_anchor' => '앵커 광고',
+        'econarc_ads_enabled' => '본문 내 광고 활성화',
+        'econarc_top_ad_enabled' => '상단 광고 활성화',
+        'econarc_infeed_ad_enabled' => '인피드 광고 활성화',
     ];
 
     foreach ( $ad_locations as $key => $label ) {
-        $wp_customize->add_setting( $key . '_enabled', array(
+        $wp_customize->add_setting( $key, array(
             'default'           => false,
             'sanitize_callback' => 'wp_validate_boolean',
         ) );
-        $wp_customize->add_control( $key . '_enabled_control', array(
-            'label'    => $label . ' 활성화',
+        $wp_customize->add_control( $key . '_control', array(
+            'label'    => $label,
             'section'  => 'gp_ad_settings_section',
-            'settings' => $key . '_enabled',
+            'settings' => $key,
             'type'     => 'checkbox',
         ) );
     }
