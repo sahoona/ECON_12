@@ -34,3 +34,16 @@ function custom_excerpt_length( $length ) {
     return 60;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+/**
+ * Calculate reading time based on content.
+ *
+ * @param int $post_id The ID of the post.
+ * @return string The estimated reading time.
+ */
+function custom_calculate_reading_time( $post_id ) {
+    $content = get_post_field( 'post_content', $post_id );
+    $word_count = str_word_count( strip_tags( $content ) );
+    $reading_time = ceil( $word_count / 200 ); // 200 words per minute
+    return $reading_time . ' min read';
+}

@@ -1,54 +1,56 @@
-/* YARPP Custom CSS for List View */
+/* YARPP Custom CSS for a Clean, Modern List View */
 
 .yarpp-related-list {
-    margin: 30px 0;
+    margin: 40px 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .yarpp-related-title {
-    font-size: 1.5em;
-    font-weight: 700;
-    margin-bottom: 20px;
+    font-size: 1.8em;
+    font-weight: 600;
+    margin-bottom: 25px;
     color: var(--color-text-title);
     text-align: left;
-    border-bottom: 2px solid var(--color-border);
-    padding-bottom: 10px;
+    border-bottom: none;
+    padding-bottom: 0;
 }
 
 .yarpp-related-list ol {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
 }
 
 .yarpp-related-list li {
-    margin-bottom: 15px;
-    border-bottom: 1px solid var(--color-border);
-    padding-bottom: 15px;
+    margin-bottom: 0;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 0;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.yarpp-related-list li:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
+.yarpp-related-list li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
 }
 
 .yarpp-related-list a {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     text-decoration: none;
     color: inherit;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-}
-
-.yarpp-related-list a:hover {
     background-color: var(--color-background-soft);
+    height: 100%;
 }
 
 .yarpp-thumbnail-container {
-    width: 100px;
-    height: 100px;
-    margin-right: 20px;
+    width: 100%;
+    height: 180px; /* Increased height for better visuals */
+    margin-right: 0;
     flex-shrink: 0;
 }
 
@@ -56,27 +58,57 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 0;
 }
 
 .yarpp-post-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
     flex-grow: 1;
 }
 
 .yarpp-post-title {
-    font-size: 1.1em;
+    font-size: 1.2em;
     font-weight: 600;
     color: var(--color-text-title);
-    display: block;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+    line-height: 1.4;
 }
 
 .yarpp-post-meta {
     font-size: 0.9em;
     color: var(--color-text-body);
     font-weight: 400;
+    margin-top: auto;
+    padding-top: 10px;
 }
 
-.yarpp-post-date {
+.yarpp-post-date,
+.yarpp-reading-time {
     margin-right: 15px;
+}
+
+.yarpp-post-terms {
+    margin-top: 12px;
+}
+
+.yarpp-post-categories a,
+.yarpp-post-tags a {
+    display: inline-block;
+    background-color: var(--color-background-tag);
+    color: var(--color-text-tag);
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.yarpp-post-categories a:hover,
+.yarpp-post-tags a:hover {
+    background-color: var(--color-accent);
+    color: #fff;
 }
