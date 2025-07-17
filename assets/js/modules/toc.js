@@ -178,13 +178,19 @@ export function setupTOC() {
                     showMoreButton.textContent = 'Show More';
                     showMoreButton.classList.add('gp-toc-show-more-button');
                     showMoreLi.appendChild(showMoreButton);
-                    tocContainer.appendChild(showMoreLi);
+                    tocList.appendChild(showMoreLi);
 
                     showMoreButton.addEventListener('click', function(e) {
                         e.preventDefault();
-                        tocList.classList.remove('toc-collapsed');
-                        tocList.classList.add('toc-expanded');
-                        showMoreLi.style.display = 'none';
+                        if (tocList.classList.contains('toc-collapsed')) {
+                            tocList.classList.remove('toc-collapsed');
+                            tocList.classList.add('toc-expanded');
+                            showMoreButton.textContent = 'Show Less';
+                        } else {
+                            tocList.classList.remove('toc-expanded');
+                            tocList.classList.add('toc-collapsed');
+                            showMoreButton.textContent = 'Show More';
+                        }
                     });
                 }
             }, 100);
