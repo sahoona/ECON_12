@@ -146,7 +146,8 @@ function manageTOCOverflow() {
     const tocContainer = document.getElementById('gp-toc-container');
 
     // Resetting states
-    tocList.classList.remove('toc-collapsed', 'toc-expanded');
+    tocContainer.classList.remove('toc-collapsed');
+    tocList.classList.remove('toc-expanded');
     const existingButton = tocContainer.querySelector('.gp-toc-show-more-button');
     if (existingButton) {
         existingButton.remove();
@@ -155,6 +156,7 @@ function manageTOCOverflow() {
     // Use a small timeout to let the browser render and calculate the final height
     setTimeout(() => {
         if (tocList.scrollHeight > 400) {
+            tocContainer.classList.add('toc-collapsed');
             tocList.classList.add('toc-collapsed');
 
             const showMoreButton = document.createElement('button');
@@ -162,11 +164,13 @@ function manageTOCOverflow() {
             showMoreButton.className = 'gp-toc-show-more-button';
 
             showMoreButton.addEventListener('click', function() {
-                if (tocList.classList.contains('toc-collapsed')) {
+                if (tocContainer.classList.contains('toc-collapsed')) {
+                    tocContainer.classList.remove('toc-collapsed');
                     tocList.classList.remove('toc-collapsed');
                     tocList.classList.add('toc-expanded');
                     this.textContent = 'Show Less';
                 } else {
+                    tocContainer.classList.add('toc-collapsed');
                     tocList.classList.add('toc-collapsed');
                     tocList.classList.remove('toc-expanded');
                     this.textContent = 'Show More';
