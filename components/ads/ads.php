@@ -61,7 +61,7 @@ function econarc_insert_manual_ads( $content ) {
     <div class="manual-ad-container">
         <ins class="adsbygoogle"
              style="display:block"
-             data-ad-client="{$ad_client}"
+             data-ad-client="ca-pub-{$ad_client}"
              data-ad-slot="{$ad_slot}"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
@@ -118,7 +118,7 @@ function econarc_homepage_top_ad() {
         // 광고가 활성화되었고, 필수 ID 값이 모두 있을 때만 광고 출력
         if ( $ads_enabled && ! empty( trim( $ad_client ) ) && ! empty( trim( $ad_slot ) ) ) {
             // 헤더 바로 아래, 메인 콘텐츠 시작 전에 광고 출력
-            echo '<div class="manual-ad-container top-ad-container" style="margin-top: 20px; margin-bottom: 20px; text-align: center;"><ins class="adsbygoogle" style="display:block" data-ad-client="' . esc_attr($ad_client) . '" data-ad-slot="' . esc_attr($ad_slot) . '" data-ad-format="auto" data-full-width-responsive="true"></ins></div>';
+            echo '<div class="manual-ad-container top-ad-container" style="margin-top: 20px; margin-bottom: 20px; text-align: center;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-' . esc_attr(trim($ad_client)) . '" data-ad-slot="' . esc_attr($ad_slot) . '" data-ad-format="auto" data-full-width-responsive="true"></ins></div>';
         }
     }
 }
@@ -155,7 +155,7 @@ function econarc_homepage_in_feed_ad() {
 
         // 필수 ID 값이 모두 있을 때만 광고 출력
         if ( ! empty( trim( $ad_client ) ) && ! empty( trim( $ad_slot ) ) ) {
-            echo '<article class="post type-post status-publish format-standard hentry manual-ad-article"><div class="inside-article" style="padding:0; border:none; background:transparent;"><div class="manual-ad-container in-feed-ad"><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="' . esc_attr($ad_client) . '" data-ad-slot="' . esc_attr($ad_slot) . '"></ins></div></div></article>';
+            echo '<article class="post type-post status-publish format-standard hentry manual-ad-article"><div class="inside-article" style="padding:0; border:none; background:transparent;"><div class="manual-ad-container in-feed-ad"><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-' . esc_attr(trim($ad_client)) . '" data-ad-slot="' . esc_attr($ad_slot) . '"></ins></div></div></article>';
         }
     }
 }
