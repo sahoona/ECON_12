@@ -21,7 +21,7 @@ export function setupLazyLoading(container = document) {
             }
         });
     }, {
-        rootMargin: '0px 0px 100px 0px', // Start loading when 100px away
+        rootMargin: '0px 0px 500px 0px', // Start loading when 500px away
         threshold: 0.01
     });
 

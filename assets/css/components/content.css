@@ -28,7 +28,7 @@ body:not(.single-post) article.post {
 body.single article.post { /* body.single-post 에서 body.single 로 변경하여 일반 페이지도 포함 */
     background-color: var(--bg-secondary);
     border: 1px solid var(--border-primary) !important; /* 경계선 보이도록 !important 추가 */
-    border-radius: 20px;
+    border-radius: 0;
     /* padding: 30px 40px !important; */ /* 넓어진 패딩 제거 */
     box-sizing: border-box;
     width: 100%;
@@ -123,7 +123,7 @@ img[loading="lazy"].loaded {
     background-color: transparent; /* Article wrapper itself is transparent */
     border: 1px solid var(--border-primary) !important; /* 홈 카드와 동일한 테두리 적용 */
     padding: 0 !important; /* 카드 자체 패딩 제거 */
-    border-radius: 20px !important; /* Consistent with home page cards */
+    border-radius: 0 !important; /* Consistent with home page cards */
     box-shadow: none !important; /* Consistent with home page cards */
     overflow: hidden; /* Consistent with home page cards */
     width: 100% !important; /* Consistent with home page cards */
@@ -143,7 +143,7 @@ body.single-post .site-main > article.ajax-loaded-card > div.inside-article {
     margin-bottom: 0 !important; /* Match home page inside-article */
     background-color: var(--bg-secondary) !important; /* Card content background */
     border: none !important; /* Match home page inside-article */
-    border-radius: 20px; /* Match home page inside-article */
+    border-radius: 0; /* Match home page inside-article */
     overflow: hidden; /* Match home page inside-article */
     box-sizing: border-box !important; /* Match home page inside-article */
     display: flex; /* Added for consistency */
