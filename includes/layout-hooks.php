@@ -11,7 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Layout setup
 function gp_layout_setup() {
-    echo '<p>layout setup 실행됨</p>';
     remove_action( 'generate_after_entry_title', 'generate_post_meta' );
     remove_action( 'generate_after_entry_header', 'generate_post_meta' );
     remove_action( 'generate_after_entry_header', 'generate_post_image' );
@@ -22,7 +21,7 @@ function gp_layout_setup() {
     add_action( 'generate_after_entry_header', 'gp_featured_image_output', 15 );
     add_action( 'generate_after_entry_header', 'gp_insert_toc', 20 );
 
-    add_action( 'generate_before_comment_container', 'gp_child_display_after_content_widget_area', 8 );
+    add_action( 'generate_after_entry_content', 'gp_child_display_after_content_widget_area', 8 );
     add_action( 'generate_after_entry_content', 'gppress_tags_before_related', 9);
     add_action( 'generate_after_entry_content', 'gp_render_post_footer_sections', 11 );
     add_action( 'generate_after_entry_content', 'gp_series_posts_output', 15 );
@@ -44,25 +43,3 @@ add_filter( 'generate_footer_entry_meta_items', function($items) { return array_
 add_filter( 'excerpt_length', function($length) { return 55; }, 999 );
 add_filter( 'generate_excerpt_more_output', function() { return ' …'; } );
 
-// Register "After Entry Content" widget area
-function gp_child_register_widget_areas() {
-    register_sidebar( array(
-        'name'          => '본문 끝 위젯 영역',
-        'id'            => 'after_entry_content_widget_area',
-        'description'   => '글 본문 내용이 끝나는 지점, 태그 박스 위에 표시됩니다.',
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h2 class="widget-title">',
-        'after_title'   => '</h2>',
-    ) );
-}
-add_action( 'widgets_init', 'gp_child_register_widget_areas' );
-
-// Display the widget area after the entry content
-function gp_child_display_after_content_widget_area() {
-    if ( is_singular( 'post' ) && is_active_sidebar( 'after_entry_content_widget_area' ) ) {
-        echo '<div class="after-entry-content-widget-area">';
-        dynamic_sidebar( 'after_entry_content_widget_area' );
-        echo '</div>';
-    }
-}
