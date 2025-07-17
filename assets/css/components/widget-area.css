@@ -1,0 +1,27 @@
+/*
+ * Widget Area Styles
+ */
+
+.after-entry-content-widget-area {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: 20px;
+    padding: 30px;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.after-entry-content-widget-area .widget {
+    margin-bottom: 2em;
+}
+
+.after-entry-content-widget-area .widget:last-child {
+    margin-bottom: 0;
+}
+
+.after-entry-content-widget-area .widget-title {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-bottom: 1em;
+    color: var(--text-heading);
+}

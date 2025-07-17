@@ -278,5 +278,27 @@ $wp_customize->add_control( 'econarc_top_ad_slot', array(
     'section'     => 'econarc_ad_settings',
     'label'       => __( '목록 상단 광고 단위 ID', 'econarc' ),
 ) );
+
+// 9. 본문 끝 위젯 광고 활성화 체크박스
+$wp_customize->add_setting( 'econarc_after_content_ad_enabled', array(
+    'default'           => false,
+    'sanitize_callback' => 'wp_validate_boolean',
+) );
+$wp_customize->add_control( 'econarc_after_content_ad_enabled', array(
+    'type'    => 'checkbox',
+    'section' => 'econarc_ad_settings',
+    'label'   => __( '본문 끝 위젯 광고 활성화', 'econarc' ),
+) );
+
+// 10. 본문 끝 위젯 광고 단위 ID 입력 필드
+$wp_customize->add_setting( 'econarc_after_content_ad_slot', array(
+    'default'           => '',
+    'sanitize_callback' => 'sanitize_text_field',
+) );
+$wp_customize->add_control( 'econarc_after_content_ad_slot', array(
+    'type'        => 'text',
+    'section'     => 'econarc_ad_settings',
+    'label'       => __( '본문 끝 위젯 광고 단위 ID', 'econarc' ),
+) );
 }
 add_action( 'customize_register', 'econarc_customize_register' );

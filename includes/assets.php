@@ -38,6 +38,7 @@ function gp_child_enqueue_assets() {
         'sidebar' => '/assets/css/components/sidebar.css',
         'ads' => '/components/ads/ads.css',
         'back-to-top' => '/assets/css/components/back-to-top.css',
+        'widget-area' => '/assets/css/components/widget-area.css',
     ];
 
     $last_style_handle = 'gp-child-style';
