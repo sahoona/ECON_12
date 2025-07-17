@@ -1,19 +1,20 @@
-/* Related Posts Section - Multi-line Content Layout */
+/*
+   YARPP Custom CSS - Final Rewrite
+   Author: Jules
+   Description: A complete restyle for a clean, modern, multi-line related posts section.
+*/
 
 .related-posts-container {
-    margin: 60px 0;
+    margin: 80px 0;
     font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .related-posts-title {
-    font-size: 2em;
+    font-size: 24px;
     font-weight: 700;
-    margin: 0 auto 35px auto;
-    color: var(--color-text-title);
+    margin: 0 0 30px 0;
+    color: #1d1d1f; /* Apple's dark gray */
     text-align: center;
-    border-bottom: 2px solid var(--color-border-soft);
-    padding-bottom: 15px;
-    width: 100%;
 }
 
 .related-posts-list {
@@ -22,37 +23,34 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 }
 
 .related-posts-item {
-    border: none;
     padding: 0;
-    border-radius: 16px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.related-posts-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.07);
 }
 
 .related-posts-link {
     display: flex;
-    align-items: flex-start; /* Align items to the top */
+    align-items: flex-start;
     text-decoration: none;
     color: inherit;
-    background-color: var(--color-background-soft);
+    background-color: #f5f5f7; /* Apple's light gray */
     padding: 20px;
-    border: 1px solid var(--color-border-soft);
-    border-radius: 16px;
-    width: 100%;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.related-posts-item:hover .related-posts-link {
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
 }
 
 .related-posts-thumbnail-container {
-    width: 130px;
-    height: 130px;
-    margin-right: 25px;
+    width: 120px;
+    height: 120px;
+    margin-right: 20px;
     flex-shrink: 0;
 }
 
@@ -66,66 +64,63 @@
 .related-posts-content {
     flex-grow: 1;
     display: flex;
-    flex-direction: column; /* Arrange content vertically */
+    flex-direction: column;
     justify-content: flex-start;
-    gap: 8px; /* Space between content rows */
+    gap: 6px;
 }
 
 .related-posts-post-title {
-    font-size: 1.2em;
-    font-weight: 700;
-    color: var(--color-text-title);
+    font-size: 18px;
+    font-weight: 600;
+    color: #1d1d1f;
     margin: 0;
     line-height: 1.4;
 }
 
 .related-posts-meta {
-    font-size: 0.9em;
-    color: var(--color-text-meta);
+    font-size: 14px;
+    color: #6e6e73; /* Apple's secondary text color */
     font-weight: 400;
     display: flex;
     align-items: center;
-    gap: 15px;
+}
+
+.related-posts-separator {
+    margin: 0 8px;
 }
 
 .related-posts-categories {
-    font-size: 0.9em;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .related-posts-categories a {
-    color: var(--color-accent);
+    color: #0071e3; /* Apple's blue */
     text-decoration: none;
-    font-weight: 500;
 }
 .related-posts-categories a:hover {
     text-decoration: underline;
 }
 
 .related-posts-tags {
-    margin-top: 5px;
+    margin-top: 8px;
 }
 
-/* Tag styles inspired by .tags-links a from content.css, but smaller */
 .related-posts-tags a {
-    display: inline-flex !important;
-    align-items: center;
-    background-color: var(--bg-tertiary) !important;
-    color: var(--text-secondary) !important;
-    border: 1px solid var(--border-secondary) !important;
-    padding: 5px 12px !important; /* Smaller padding */
-    border-radius: 50px !important;
-    margin: 0 4px 4px 0 !important; /* Smaller bottom margin */
-    font-size: 0.8rem !important; /* Smaller font size */
+    display: inline-block;
+    background-color: rgba(0, 113, 227, 0.08); /* Apple blue with low opacity */
+    color: #0071e3;
+    border: 1px solid transparent;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
     font-weight: 500;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-    line-height: 1;
+    margin: 0 4px 4px 0;
     text-decoration: none !important;
+    transition: all 0.2s ease;
 }
 
 .related-posts-tags a:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    background-color: var(--text-primary) !important;
-    color: var(--white-color) !important;
-    border-color: var(--text-primary) !important;
+    background-color: #0071e3;
+    color: #fff;
 }
