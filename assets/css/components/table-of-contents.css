@@ -145,7 +145,7 @@
 .gp-toc-show-more-button {
     cursor: pointer;
     border: none;
-    background: transparent;
+    background-color: transparent;
     color: #000000;
     font-weight: bold;
     padding: 0.5rem 1rem;
@@ -178,7 +178,8 @@
     color: #000000;
 }
 
-html.dark-mode-active #gp-toc-container .gp-toc-list.toc-expanded + .gp-toc-show-more-container .gp-toc-show-more-button {
+html.dark-mode-active #gp-toc-container .gp-toc-list.toc-expanded + .gp-toc-show-more-container .gp-toc-show-more-button,
+html.dark-mode-active .gp-toc-show-more-button {
     color: var(--text-muted);
 }
 
