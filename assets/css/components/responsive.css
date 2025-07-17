@@ -621,7 +621,8 @@ main#main {
         text-align: center !important;
     }
 
-    .site-footer-container .footer-about {
+    .site-footer-container .footer-about,
+    .site-footer-container .footer-links {
         width: 100% !important;
     }
 
