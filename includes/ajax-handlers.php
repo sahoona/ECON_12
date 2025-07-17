@@ -195,38 +195,38 @@ function gp_load_more_posts_ajax_handler() {
             ?>
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 <div class="inside-article">
+                    <header class="entry-header">
+                        <?php
+                        if (function_exists('gp_home_breadcrumb_output')) {
+                            gp_home_breadcrumb_output();
+                        }
+                        the_title(sprintf('<h2 class="entry-title" itemprop="headline"><a href="%s" rel="bookmark">', esc_url(get_permalink())), '</a></h2>');
+                        ?>
+                    </header>
+
                     <?php
-                    // Display categories
-                    if (function_exists('gp_home_breadcrumb_output')) {
-                        gp_home_breadcrumb_output();
-                    }
-
-                    // Display title
-                    the_title(sprintf('<h2 class="entry-title" itemprop="headline"><a href="%s" rel="bookmark">', esc_url(get_permalink())), '</a></h2>');
-
-                    // Display featured image
                     if (function_exists('gp_featured_image_output')) {
                         gp_featured_image_output();
                     }
-
-                    // Display excerpt
-                    echo '<div class="entry-summary" itemprop="text">';
-                    echo wp_kses_post(wp_trim_words(get_the_excerpt(), 60, '...'));
-                    echo '</div>';
-
-                    // Display footer meta (read more, tags, stars)
-                    echo '<footer class="entry-meta">';
-                    if (function_exists('gp_read_more_btn_output')) {
-                        gp_read_more_btn_output();
-                    }
-                    if (function_exists('gp_add_tags_to_list')) {
-                        gp_add_tags_to_list();
-                    }
-                    if (function_exists('gp_add_star_rating_to_list')) {
-                        gp_add_star_rating_to_list();
-                    }
-                    echo '</footer>';
                     ?>
+
+                    <div class="entry-summary" itemprop="text">
+                        <?php echo wp_kses_post(wp_trim_words(get_the_excerpt(), 60, '...')); ?>
+                    </div>
+
+                    <footer class="entry-meta">
+                        <?php
+                        if (function_exists('gp_read_more_btn_output')) {
+                            gp_read_more_btn_output();
+                        }
+                        if (function_exists('gp_add_tags_to_list')) {
+                            gp_add_tags_to_list();
+                        }
+                        if (function_exists('gp_add_star_rating_to_list')) {
+                            gp_add_star_rating_to_list();
+                        }
+                        ?>
+                    </footer>
                 </div>
             </article>
             <?php
