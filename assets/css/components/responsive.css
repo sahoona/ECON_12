@@ -203,6 +203,10 @@
     }
 
     body:not(.single) .entry-header, body:not(.single) .post-image, body:not(.single) .entry-summary, body:not(.single) .read-more-container, body:not(.single) .list-tags-container, body:not(.single) .gp-list-star-rating { padding: 0 !important; }
+    .post-thumbnail {
+        margin: 0 !important;
+        border-radius: 0 !important;
+    }
     .entry-header { padding-top: 15px !important; }
     .list-tags-container { padding-bottom: 8px !important; margin-bottom: 15px !important; /* 태그박스 하단 마진 추가 */ }
     .gp-list-star-rating { padding-bottom: 15px !important; margin-top: 10px !important; /* 별점 상단 마진 추가 */ }

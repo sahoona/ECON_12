@@ -18,7 +18,6 @@ function gp_layout_setup() {
 
     add_action( 'generate_before_entry_title', 'gp_breadcrumb_output', 5 );
     add_action( 'generate_after_entry_title', 'gp_meta_after_title', 10 );
-    add_action( 'generate_after_entry_header', 'gp_featured_image_output', 15 );
     add_action( 'generate_after_entry_header', 'gp_insert_toc', 20 );
 
     add_action( 'generate_after_entry_content', 'gppress_tags_before_related', 9);
