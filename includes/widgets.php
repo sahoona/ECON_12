@@ -21,7 +21,7 @@ function gp_child_register_widget_areas() {
         'after_title'   => '</h2>',
     ) );
 }
-add_action( 'init', 'gp_child_register_widget_areas' );
+add_action( 'widgets_init', 'gp_child_register_widget_areas' );
 
 // Display the widget area after the entry content
 function gp_child_display_after_content_widget_area() {
