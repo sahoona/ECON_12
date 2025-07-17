@@ -31,20 +31,9 @@ function gp_layout_setup() {
 
     add_action( 'wp_footer', 'gp_add_footer_elements_and_scripts' );
 
-    // Add elements to archive posts
-    add_action( 'generate_after_entry_summary', 'gp_add_archive_post_elements' );
+    add_action( 'wp_footer', 'gp_add_footer_elements_and_scripts' );
 }
 add_action( 'wp', 'gp_layout_setup' );
-
-function gp_add_archive_post_elements() {
-    if ( is_singular() ) {
-        return;
-    }
-
-    gp_read_more_btn_output();
-    gp_add_tags_to_list();
-    gp_add_star_rating_to_list();
-}
 
 
 // add_filter( 'generate_copyright', '__return_empty_string' );
@@ -53,3 +42,17 @@ add_filter( 'generate_footer_entry_meta_items', function($items) { return array_
 add_filter( 'excerpt_length', function($length) { return 55; }, 999 );
 add_filter( 'generate_excerpt_more_output', function() { return ' …'; } );
 
+function gp_add_elements_to_excerpt( $excerpt ) {
+    if ( is_singular() || ! in_the_loop() ) {
+        return $excerpt;
+    }
+
+    ob_start();
+    gp_read_more_btn_output();
+    gp_add_tags_to_list();
+    gp_add_star_rating_to_list();
+    $additional_elements = ob_get_clean();
+
+    return $excerpt . $additional_elements;
+}
+add_filter( 'the_excerpt', 'gp_add_elements_to_excerpt' );
