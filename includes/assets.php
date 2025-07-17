@@ -24,7 +24,6 @@ function gp_child_enqueue_assets() {
     );
 
     $css_files = [
-        'main' => '/assets/css/main.css',
         'layout' => '/assets/css/layout.css',
         'components-content' => '/assets/css/components/content.css',
         'components-dark_mode' => '/assets/css/components/dark_mode.css',
