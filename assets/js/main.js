@@ -1,4 +1,4 @@
-import { generateClientSideTOC, setupTOC } from './modules/toc.js';
+import { generateClientSideTOC } from './modules/toc.js';
 import { initDarkMode } from './modules/darkMode.js';
 import { setupFloatingButtons } from './modules/floatingButtons.js';
 import { setupSidebar } from './modules/sidebar.js';
@@ -33,7 +33,6 @@ setupSeriesLoadMoreButton($);
 
 if (document.getElementById('gp-toc-container')) {
     generateClientSideTOC();
-    setupTOC();
 }
 
 initAllAds();
