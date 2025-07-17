@@ -137,7 +137,6 @@ export function generateClientSideTOC() {
         // Setup TOC interactivity
         const tocTitle = tocContainer.querySelector('.gp-toc-title');
         const tocToggle = tocContainer.querySelector('.gp-toc-toggle');
-        const showMoreContainer = tocContainer.querySelector('.gp-toc-show-more-container');
 
         if (tocTitle && tocList) {
             if (tocTitle.dataset.listenerAttached !== 'true') {
@@ -146,6 +145,7 @@ export function generateClientSideTOC() {
                     e.preventDefault();
                     tocList.classList.toggle('toc-list-hidden');
                     const isHidden = tocList.classList.contains('toc-list-hidden');
+                    const showMoreContainer = tocContainer.querySelector('.gp-toc-show-more-container');
 
                     if (showMoreContainer) {
                         showMoreContainer.style.display = isHidden ? 'none' : 'block';
