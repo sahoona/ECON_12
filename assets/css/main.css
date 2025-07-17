@@ -224,7 +224,7 @@ body:not(.single) .site-main article.post .entry-title {
 
 /* 3. Unify "Published:" label color to muted gray */
 .posted-on-wrapper .date-secondary .date-label {
-    color: var(--text-primary) !important;
+    color: #333333 !important;
 }
 
 /* 4. Ensure the date number itself has the standard primary text color */
@@ -234,57 +234,6 @@ body:not(.single) .site-main article.post .entry-title {
 
 /* === UNIFIED URL COPY BUTTON STYLE (48px Version) === */
 /* This single block styles BOTH the top-left and bottom-row copy buttons to be 48px. */
-
-.yarpp-related {
-    border-top: 1px solid #eee;
-    padding: 20px 0;
-    margin-top: 30px;
-}
-
-.yarpp-related h3 {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #333;
-}
-
-.yarpp-thumbnails-horizontal {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.yarpp-thumbnail {
-    width: calc(33.333% - 20px);
-    margin-bottom: 20px;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    transition: box-shadow 0.3s ease;
-}
-
-.yarpp-thumbnail:hover {
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.yarpp-thumbnail-title {
-    padding: 15px;
-    font-size: 1em;
-    font-weight: bold;
-    color: #333;
-    text-align: center;
-}
-
-.yarpp-thumbnail img {
-    width: 100%;
-    height: auto;
-}
-
-.posted-on-wrapper .date-secondary .date-label {
-    color: #333333 !important;
-}
 
 /* 1. Main unified style for both buttons - THIS BLOCK IS NOW DELETED as properties are migrated */
 
