@@ -133,68 +133,10 @@ export function generateClientSideTOC() {
 
     if (tocList.children.length > 0) {
         tocContainer.style.display = '';
-        if (!tocList.classList.contains('toc-list-hidden')) {
-            manageTOCOverflow();
-        }
     } else {
         tocContainer.style.display = 'none';
     }
 }
-
-function manageTOCOverflow() {
-    const tocList = document.querySelector('#gp-toc-container .gp-toc-list');
-    if (!tocList) return;
-
-    const addShowMoreButton = () => {
-        // Remove existing button first
-        const existingButton = tocList.querySelector('.gp-toc-show-more-li');
-        if (existingButton) {
-            existingButton.remove();
-        }
-
-        if (tocList.scrollHeight > 400 && !tocList.classList.contains('toc-expanded')) {
-            tocList.classList.add('toc-collapsed');
-
-            const showMoreLi = document.createElement('li');
-            showMoreLi.className = 'gp-toc-show-more-li';
-
-            const showMoreButton = document.createElement('button');
-            showMoreButton.textContent = 'Show More';
-            showMoreButton.className = 'gp-toc-show-more-button';
-
-            showMoreLi.appendChild(showMoreButton);
-            tocList.appendChild(showMoreLi);
-
-            showMoreButton.addEventListener('click', function(e) {
-                e.stopPropagation();
-                tocList.classList.remove('toc-collapsed');
-                tocList.classList.add('toc-expanded');
-                this.textContent = 'Show Less';
-                showMoreLi.style.background = 'var(--bg-secondary)'; // Solid background when expanded
-            });
-        }
-    };
-
-    // Use a timeout to let the browser render and calculate the final height
-    setTimeout(addShowMoreButton, 100);
-
-    // Re-check on window resize
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            // Reset state before re-checking
-            tocList.classList.remove('toc-collapsed', 'toc-expanded');
-            const btn = tocList.querySelector('.gp-toc-show-more-button');
-            if (btn) {
-                btn.textContent = 'Show More';
-                btn.parentElement.style.background = 'linear-gradient(to top, var(--bg-secondary) 70%, transparent)';
-            }
-            addShowMoreButton();
-        }, 200);
-    });
-}
-
 
 export function setupTOC() {
     const tocContainer = document.getElementById('gp-toc-container');
@@ -221,16 +163,25 @@ export function setupTOC() {
                         tocToggle.textContent = '[HIDE]';
                     }
                 }
-                 // After toggling main visibility, check overflow
-                if (!isHidden) {
-                    manageTOCOverflow();
-                }
             });
             tocTitle.dataset.listenerAttached = 'true';
+        }
 
-            // Initial check in case it's visible by default
-             if (!tocList.classList.contains('toc-list-hidden')) {
-                manageTOCOverflow();
+        if (tocList && tocList.children.length > 0) {
+            const clampOptions = {
+                clamp: '400px',
+                truncationChar: '',
+                truncationHTML: '<a href="#" class="gp-toc-show-more-button">Show More</a>'
+            };
+            $clamp(tocList, clampOptions);
+
+            const showMoreButton = tocList.querySelector('.gp-toc-show-more-button');
+            if (showMoreButton) {
+                showMoreButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    tocList.style.maxHeight = 'none';
+                    this.style.display = 'none';
+                });
             }
         }
     }

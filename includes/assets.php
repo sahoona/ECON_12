@@ -55,10 +55,19 @@ function gp_child_enqueue_assets() {
         }
     }
 
+    if (file_exists($theme_dir . '/assets/js/vendor/clamp.min.js')) {
+        wp_enqueue_script('clamp-js',
+            get_stylesheet_directory_uri() . '/assets/js/vendor/clamp.min.js',
+            array(),
+            '0.5.1',
+            true
+        );
+    }
+
     if (file_exists($theme_dir . '/assets/js/main.js')) {
         wp_enqueue_script('gp-main-script',
             get_stylesheet_directory_uri() . '/assets/js/main.js',
-            array('jquery'),
+            array('jquery', 'clamp-js'),
             filemtime($theme_dir . '/assets/js/main.js'),
             true
         );
