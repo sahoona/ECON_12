@@ -299,12 +299,6 @@ function gp_add_social_share_buttons(){
 }
 
 function gppress_tags_before_related() {
-    if ( is_single() && is_active_sidebar( 'after_entry_content_widget_area' ) ) {
-        echo '<div class="after-entry-content-widget-area">';
-        dynamic_sidebar( 'after_entry_content_widget_area' );
-        echo '</div>';
-    }
-
     if ( is_single() && has_tag() ) {
         the_tags('<footer class="entry-meta tags-footer"><div class="tags-links">', '', '</div></footer>');
     }
