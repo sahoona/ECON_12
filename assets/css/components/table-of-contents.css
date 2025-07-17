@@ -149,7 +149,8 @@
     color: var(--text-muted);
     font-weight: bold;
     padding: 0.5rem 1rem;
-    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    text-shadow: none;
+    transition: color 0.3s ease;
 }
 
 .gp-toc-show-more-button .arrow {
@@ -170,7 +171,7 @@
 }
 
 .gp-toc-show-more-button:hover {
-    background: transparent;
+    color: var(--accent-color);
 }
 
 #gp-toc-container .gp-toc-list.toc-expanded + .gp-toc-show-more-container .gp-toc-show-more-button {
