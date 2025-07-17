@@ -133,9 +133,49 @@ export function generateClientSideTOC() {
 
     if (tocList.children.length > 0) {
         tocContainer.style.display = '';
+        manageTOCOverflow(); // Call here after TOC is populated
     } else {
         tocContainer.style.display = 'none';
     }
+}
+
+function manageTOCOverflow() {
+    const tocList = document.querySelector('#gp-toc-container .gp-toc-list');
+    if (!tocList) return;
+
+    const tocContainer = document.getElementById('gp-toc-container');
+
+    // Resetting states
+    tocList.classList.remove('toc-collapsed', 'toc-expanded');
+    const existingButton = tocContainer.querySelector('.gp-toc-show-more-button');
+    if (existingButton) {
+        existingButton.remove();
+    }
+
+    // Use a small timeout to let the browser render and calculate the final height
+    setTimeout(() => {
+        if (tocList.scrollHeight > 400) {
+            tocList.classList.add('toc-collapsed');
+
+            const showMoreButton = document.createElement('button');
+            showMoreButton.textContent = 'Show More';
+            showMoreButton.className = 'gp-toc-show-more-button';
+
+            showMoreButton.addEventListener('click', function() {
+                if (tocList.classList.contains('toc-collapsed')) {
+                    tocList.classList.remove('toc-collapsed');
+                    tocList.classList.add('toc-expanded');
+                    this.textContent = 'Show Less';
+                } else {
+                    tocList.classList.add('toc-collapsed');
+                    tocList.classList.remove('toc-expanded');
+                    this.textContent = 'Show More';
+                }
+            });
+
+            tocContainer.appendChild(showMoreButton);
+        }
+    }, 100);
 }
 
 export function setupTOC() {
@@ -167,4 +207,5 @@ export function setupTOC() {
             tocTitle.dataset.listenerAttached = 'true';
         }
     }
+    manageTOCOverflow();
 }
