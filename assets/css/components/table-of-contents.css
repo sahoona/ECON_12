@@ -146,7 +146,7 @@
 .gp-toc-hide-button {
     cursor: pointer;
     border: none;
-    background: transparent;
+    background-color: transparent;
     color: #000000;
     font-weight: bold;
     padding: 0.5rem 1rem;
@@ -171,7 +171,8 @@
     transform: rotate(-135deg);
 }
 
-.gp-toc-show-more-button:hover {
+.gp-toc-show-more-button:hover,
+.gp-toc-hide-button:hover {
     color: var(--accent-color);
 }
 
