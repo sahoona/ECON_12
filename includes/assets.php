@@ -125,9 +125,13 @@ function gp_child_enqueue_assets() {
         'currentPostType' => 'unknown',
         'isFrontPage' => is_front_page(),
         'isHome' => is_home(),
-        // ★★★ 아래 3줄을 추가합니다. ★★★
+        // Ad settings
+        'ads_enabled' => get_theme_mod('econarc_ads_enabled', false),
+        'top_ad_enabled' => get_theme_mod('econarc_top_ad_enabled', false),
         'infeed_ad_enabled' => get_theme_mod('econarc_infeed_ad_enabled', false),
         'ad_client' => get_theme_mod('econarc_ad_client'),
+        'ad_slot' => get_theme_mod('econarc_ad_slot'),
+        'top_ad_slot' => get_theme_mod('econarc_top_ad_slot'),
         'infeed_ad_slot' => get_theme_mod('econarc_infeed_ad_slot')
 	];
 
