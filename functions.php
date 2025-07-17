@@ -56,4 +56,4 @@ function gp_child_display_after_content_widget_area() {
         echo '</div>';
     }
 }
-add_action( 'generate_after_entry_content', 'gp_child_display_after_content_widget_area', 15 );
+add_action( 'generate_after_entry_content', 'gp_child_display_after_content_widget_area', 14 );
