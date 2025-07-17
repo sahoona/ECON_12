@@ -175,11 +175,11 @@
 }
 
 #gp-toc-container .gp-toc-list.toc-expanded + .gp-toc-show-more-container .gp-toc-show-more-button {
-    color: var(--text-primary);
+    color: var(--text-muted);
 }
 
 html.dark-mode-active #gp-toc-container .gp-toc-list.toc-expanded + .gp-toc-show-more-container .gp-toc-show-more-button {
-    color: var(--text-dark);
+    color: var(--text-muted);
 }
 
 div#gp-toc-container > ol.gp-toc-list > li.toc-heading-level-2 > a {
