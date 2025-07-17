@@ -142,53 +142,8 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.gp-custom-copy-bottom-btn {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 48px !important;
-    height: 48px !important;
-    min-width: 48px !important;
-    background-color: #343a40 !important;
-    color: #ffffff !important;
-    border: 1px solid #23272b !important;
-    border-radius: 50% !important;
-    cursor: pointer !important;
-    transition: all 0.2s ease !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-    position: relative !important;
-    font-weight: normal !important;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
-    outline: none !important;
-}
-
-.gp-custom-copy-bottom-btn.copied {
-    background-color: #28a745 !important;
-    color: #ffffff !important;
-    border-color: #1e7e34 !important;
-    animation: gpCustomCopySuccess 0.6s ease-in-out !important;
-}
-
-.gp-custom-copy-bottom-btn.copied::before {
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
-}
-
-.gp-custom-copy-bottom-btn::before {
-    content: 'U';
-    font-family: sans-serif;
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: #ffffff;
-}
-
-.gp-custom-copy-bottom-btn:hover {
-    transform: translateY(-2px) !important;
-    background-color: #495057 !important;
-    border-color: #343a40 !important;
-    color: #ffffff !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+.social-share-btn.u-btn {
+    background-color: #7f8c8d; /* Neutral gray */
 }
 
 .gp-meta-bar-after-title,

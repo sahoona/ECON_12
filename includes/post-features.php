@@ -294,7 +294,7 @@ function gp_add_social_share_buttons(){
     ?><div class="gp-social-share-container"><p class="section-label">Share this post</p><div class="share-buttons">
     <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $permalink;?>" target="_blank" rel="noopener noreferrer" class="social-share-btn facebook" aria-label="Share on Facebook">F</a>
     <a href="https://x.com/intent/tweet?url=<?php echo $permalink;?>&text=<?php echo $title;?>" target="_blank" rel="noopener noreferrer" class="social-share-btn x-btn" aria-label="Share on X">X</a>
-    <a href="<?php echo esc_url(get_permalink()); ?>" class="social-share-btn gp-custom-copy-bottom-btn" aria-label="Copy link to clipboard"></a>
+    <a href="<?php echo esc_url(get_permalink()); ?>" class="social-share-btn u-btn" aria-label="Copy link to clipboard">U</a>
     </div></div><?php
 }
 
