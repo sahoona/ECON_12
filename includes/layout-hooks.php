@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Layout setup
 function gp_layout_setup() {
-    echo '<p>layout setup 실행됨</p>';
+    echo '<script>console.log("gp_layout_setup function executed!");</script>';
     remove_action( 'generate_after_entry_title', 'generate_post_meta' );
     remove_action( 'generate_after_entry_header', 'generate_post_meta' );
     remove_action( 'generate_after_entry_header', 'generate_post_image' );
@@ -35,7 +35,7 @@ function gp_layout_setup() {
 
     add_action( 'wp_footer', 'gp_add_footer_elements_and_scripts' );
 }
-add_action( 'wp', 'gp_layout_setup' );
+add_action( 'wp_head', 'gp_layout_setup' );
 
 
 // add_filter( 'generate_copyright', '__return_empty_string' );
