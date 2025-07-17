@@ -175,7 +175,7 @@
 }
 
 #gp-toc-container .gp-toc-list.toc-expanded + .gp-toc-show-more-container .gp-toc-show-more-button {
-    color: var(--text-muted);
+    color: #000000;
 }
 
 html.dark-mode-active #gp-toc-container .gp-toc-list.toc-expanded + .gp-toc-show-more-container .gp-toc-show-more-button {
