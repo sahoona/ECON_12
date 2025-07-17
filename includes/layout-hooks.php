@@ -36,7 +36,13 @@ add_action( 'wp', 'gp_layout_setup' );
 
 // add_filter( 'generate_copyright', '__return_empty_string' );
 add_filter( 'generate_show_categories', '__return_false' );
-add_filter( 'generate_footer_entry_meta_items', function($items) { return array_diff($items, ['categories', 'tags', 'comments']); } );
+add_filter( 'generate_footer_entry_meta_items', function($items) { return array_diff($items, ['categories', 'comments']); } );
 add_filter( 'excerpt_length', function($length) { return 55; }, 999 );
-add_filter( 'generate_excerpt_more_output', function() { return ' …'; } );
+add_filter( 'generate_excerpt_more_output', function() {
+    return sprintf(
+        ' <a href="%1$s" class="read-more">%2$s</a>',
+        get_permalink(),
+        __( 'Read more', 'generatepress' )
+    );
+} );
 
