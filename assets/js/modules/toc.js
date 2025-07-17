@@ -137,6 +137,7 @@ export function generateClientSideTOC() {
         // Setup TOC interactivity
         const tocTitle = tocContainer.querySelector('.gp-toc-title');
         const tocToggle = tocContainer.querySelector('.gp-toc-toggle');
+
         if (tocTitle && tocList) {
             if (tocTitle.dataset.listenerAttached !== 'true') {
                 tocTitle.style.cursor = 'pointer';
@@ -144,6 +145,11 @@ export function generateClientSideTOC() {
                     e.preventDefault();
                     tocList.classList.toggle('toc-list-hidden');
                     const isHidden = tocList.classList.contains('toc-list-hidden');
+                    const showMoreContainer = tocContainer.querySelector('.gp-toc-show-more-container');
+
+                    if (showMoreContainer) {
+                        showMoreContainer.style.display = isHidden ? 'none' : 'block';
+                    }
 
                     if (tocToggle) {
                         if (isHidden) {
@@ -166,21 +172,21 @@ export function generateClientSideTOC() {
             const showMoreContainer = document.createElement('div');
             showMoreContainer.classList.add('gp-toc-show-more-container');
             const showMoreButton = document.createElement('button');
-            showMoreButton.textContent = '펼치기';
+            showMoreButton.innerHTML = 'Show more <span class="arrow down"></span>';
             showMoreButton.classList.add('gp-toc-show-more-button');
             showMoreContainer.appendChild(showMoreButton);
-            tocContainer.appendChild(showMoreContainer);
+tocContainer.appendChild(showMoreContainer);
 
             showMoreButton.addEventListener('click', function(e) {
                 e.preventDefault();
                 if (tocList.classList.contains('toc-collapsed')) {
                     tocList.classList.remove('toc-collapsed');
                     tocList.classList.add('toc-expanded');
-                    showMoreButton.textContent = '숨기기';
+                    showMoreButton.innerHTML = 'Hide <span class="arrow up"></span>';
                 } else {
                     tocList.classList.remove('toc-expanded');
                     tocList.classList.add('toc-collapsed');
-                    showMoreButton.textContent = '펼치기';
+                    showMoreButton.innerHTML = 'Show more <span class="arrow down"></span>';
                 }
             });
         }
