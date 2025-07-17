@@ -60,7 +60,6 @@ add_action( 'widgets_init', 'gp_child_register_widget_areas' );
 // Display the widget area after the entry content
 function gp_child_display_after_content_widget_area() {
     if ( is_singular( 'post' ) && is_active_sidebar( 'after_entry_content_widget_area' ) ) {
-        echo '<p>위젯 영역 테스트</p>';
         echo '<div class="after-entry-content-widget-area">';
         dynamic_sidebar( 'after_entry_content_widget_area' );
         echo '</div>';
