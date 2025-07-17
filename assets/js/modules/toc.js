@@ -175,7 +175,7 @@ export function setupTOC() {
                     const showMoreLi = document.createElement('li');
                     showMoreLi.classList.add('gp-toc-show-more-li');
                     const showMoreButton = document.createElement('button');
-                    showMoreButton.textContent = 'Show More';
+                    showMoreButton.textContent = '펼치기';
                     showMoreButton.classList.add('gp-toc-show-more-button');
                     showMoreLi.appendChild(showMoreButton);
                     tocList.appendChild(showMoreLi);
@@ -185,11 +185,11 @@ export function setupTOC() {
                         if (tocList.classList.contains('toc-collapsed')) {
                             tocList.classList.remove('toc-collapsed');
                             tocList.classList.add('toc-expanded');
-                            showMoreButton.textContent = 'Show Less';
+                            showMoreButton.textContent = '숨기기';
                         } else {
                             tocList.classList.remove('toc-expanded');
                             tocList.classList.add('toc-collapsed');
-                            showMoreButton.textContent = 'Show More';
+                            showMoreButton.textContent = '펼치기';
                         }
                     });
                 }
