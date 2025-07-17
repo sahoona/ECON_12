@@ -24,9 +24,11 @@ Author: Jules
                         <span class="related-posts-date"><?php echo get_the_date(); ?></span>
                         <span class="related-posts-reading-time"><?php echo gp_get_reading_time( get_the_ID() ); ?></span>
                     </div>
-                    <div class="related-posts-terms">
-                        <span class="related-posts-categories"><?php the_category(', '); ?></span>
-                        <span class="related-posts-tags"><?php the_tags('', ', ', ''); ?></span>
+                    <div class="related-posts-categories">
+                        <?php the_category(', '); ?>
+                    </div>
+                    <div class="related-posts-tags">
+                        <?php the_tags('', '', ''); ?>
                     </div>
                 </div>
             </a>

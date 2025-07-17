@@ -1,4 +1,4 @@
-/* Related Posts Section - Single Line Layout & Pretendard Font */
+/* Related Posts Section - Multi-line Content Layout */
 
 .related-posts-container {
     margin: 60px 0;
@@ -8,12 +8,12 @@
 .related-posts-title {
     font-size: 2em;
     font-weight: 700;
-    margin: 0 auto 30px auto;
+    margin: 0 auto 35px auto;
     color: var(--color-text-title);
     text-align: center;
-    border-bottom: 2px solid var(--color-accent);
+    border-bottom: 2px solid var(--color-border-soft);
     padding-bottom: 15px;
-    width: fit-content;
+    width: 100%;
 }
 
 .related-posts-list {
@@ -22,7 +22,7 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 }
 
 .related-posts-item {
@@ -33,26 +33,26 @@
 }
 
 .related-posts-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.07);
 }
 
 .related-posts-link {
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* Align items to the top */
     text-decoration: none;
     color: inherit;
     background-color: var(--color-background-soft);
-    padding: 15px;
+    padding: 20px;
     border: 1px solid var(--color-border-soft);
     border-radius: 16px;
     width: 100%;
 }
 
 .related-posts-thumbnail-container {
-    width: 80px;  /* Reduced thumbnail size */
-    height: 80px; /* Reduced thumbnail size */
-    margin-right: 20px;
+    width: 130px;
+    height: 130px;
+    margin-right: 25px;
     flex-shrink: 0;
 }
 
@@ -60,69 +60,72 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 12px;
 }
 
 .related-posts-content {
     flex-grow: 1;
     display: flex;
-    align-items: center; /* Align all content items on the same line */
-    flex-wrap: nowrap; /* Prevent wrapping */
-    gap: 20px;
-    overflow: hidden; /* Hide overflow */
+    flex-direction: column; /* Arrange content vertically */
+    justify-content: flex-start;
+    gap: 8px; /* Space between content rows */
 }
 
 .related-posts-post-title {
-    font-size: 1.15em;
-    font-weight: 600;
+    font-size: 1.2em;
+    font-weight: 700;
     color: var(--color-text-title);
     margin: 0;
     line-height: 1.4;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; /* Add ellipsis for long titles */
-    flex-shrink: 1;
 }
 
 .related-posts-meta {
     font-size: 0.9em;
     color: var(--color-text-meta);
-    font-weight: 500;
+    font-weight: 400;
     display: flex;
     align-items: center;
     gap: 15px;
-    margin: 0;
-    padding: 0;
-    flex-shrink: 0; /* Prevent meta from shrinking */
 }
 
-.related-posts-date,
-.related-posts-reading-time {
-    white-space: nowrap;
+.related-posts-categories {
+    font-size: 0.9em;
 }
 
-.related-posts-terms {
-    margin-left: auto; /* Push tags to the far right */
-    overflow: hidden;
-    white-space: nowrap;
-    flex-shrink: 1;
-}
-
-.related-posts-categories,
-.related-posts-tags {
-    display: inline;
-}
-
-.related-posts-categories a,
-.related-posts-tags a {
-    display: inline-block;
-    background-color: var(--color-background-tag, #eef0f2);
-    color: var(--color-text-tag, #555);
-    padding: 4px 10px;
-    border-radius: 8px;
-    font-size: 0.8em;
-    font-weight: 500;
-    margin-left: 6px;
+.related-posts-categories a {
+    color: var(--color-accent);
     text-decoration: none;
-    border: 1px solid var(--color-border-soft);
+    font-weight: 500;
+}
+.related-posts-categories a:hover {
+    text-decoration: underline;
+}
+
+.related-posts-tags {
+    margin-top: 5px;
+}
+
+/* Tag styles inspired by .tags-links a from content.css, but smaller */
+.related-posts-tags a {
+    display: inline-flex !important;
+    align-items: center;
+    background-color: var(--bg-tertiary) !important;
+    color: var(--text-secondary) !important;
+    border: 1px solid var(--border-secondary) !important;
+    padding: 5px 12px !important; /* Smaller padding */
+    border-radius: 50px !important;
+    margin: 0 4px 4px 0 !important; /* Smaller bottom margin */
+    font-size: 0.8rem !important; /* Smaller font size */
+    font-weight: 500;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    line-height: 1;
+    text-decoration: none !important;
+}
+
+.related-posts-tags a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    background-color: var(--text-primary) !important;
+    color: var(--white-color) !important;
+    border-color: var(--text-primary) !important;
 }
