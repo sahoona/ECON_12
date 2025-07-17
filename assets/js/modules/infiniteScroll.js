@@ -74,15 +74,18 @@ if (window.ajaxPostCount > 0 && window.ajaxPostCount % 4 === 0 && window.infeedA
     } else {
         postsContainer.appendChild(adArticle);
     }
+
+    // 새로 추가된 광고 슬롯에 대해 광고 요청
+    try {
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (e) {
+        console.error('AdSense push error:', e);
+    }
 }
                     });
 
                     if (typeof setupLazyLoading === 'function') {
                         setTimeout(() => setupLazyLoading(postsContainer), 0);
-                    }
-                    // AJAX로 새 포스트 로드 후 광고 초기화 함수 호출
-                    if (typeof initializeAds === 'function') {
-                        initializeAds();
                     }
                 }
 
