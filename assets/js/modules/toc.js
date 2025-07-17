@@ -168,32 +168,41 @@ export function setupTOC() {
         }
 
         if (tocList && tocList.children.length > 0) {
-            setTimeout(() => {
+            const observer = new MutationObserver((mutations, obs) => {
                 const tocHeight = tocList.offsetHeight;
-                if (tocHeight > 400) {
-                    tocList.classList.add('toc-collapsed');
-                    const showMoreLi = document.createElement('li');
-                    showMoreLi.classList.add('gp-toc-show-more-li');
-                    const showMoreButton = document.createElement('button');
-                    showMoreButton.textContent = '펼치기';
-                    showMoreButton.classList.add('gp-toc-show-more-button');
-                    showMoreLi.appendChild(showMoreButton);
-                    tocList.appendChild(showMoreLi);
+                if (tocHeight > 0) { // Check if the TOC is actually visible
+                    obs.disconnect(); // Stop observing once we have the height
+                    if (tocHeight > 400) {
+                        tocList.classList.add('toc-collapsed');
+                        const showMoreLi = document.createElement('li');
+                        showMoreLi.classList.add('gp-toc-show-more-li');
+                        const showMoreButton = document.createElement('button');
+                        showMoreButton.textContent = '펼치기';
+                        showMoreButton.classList.add('gp-toc-show-more-button');
+                        showMoreLi.appendChild(showMoreButton);
+                        tocList.appendChild(showMoreLi);
 
-                    showMoreButton.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        if (tocList.classList.contains('toc-collapsed')) {
-                            tocList.classList.remove('toc-collapsed');
-                            tocList.classList.add('toc-expanded');
-                            showMoreButton.textContent = '숨기기';
-                        } else {
-                            tocList.classList.remove('toc-expanded');
-                            tocList.classList.add('toc-collapsed');
-                            showMoreButton.textContent = '펼치기';
-                        }
-                    });
+                        showMoreButton.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            if (tocList.classList.contains('toc-collapsed')) {
+                                tocList.classList.remove('toc-collapsed');
+                                tocList.classList.add('toc-expanded');
+                                showMoreButton.textContent = '숨기기';
+                            } else {
+                                tocList.classList.remove('toc-expanded');
+                                tocList.classList.add('toc-collapsed');
+                                showMoreButton.textContent = '펼치기';
+                            }
+                        });
+                    }
                 }
-            }, 100);
+            });
+
+            observer.observe(tocList, {
+                childList: true,
+                subtree: true,
+                attributes: true
+            });
         }
     }
 }
