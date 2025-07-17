@@ -21,7 +21,7 @@ function gp_layout_setup() {
     add_action( 'generate_after_entry_header', 'gp_featured_image_output', 15 );
     add_action( 'generate_after_entry_header', 'gp_insert_toc', 20 );
 
-    add_action( 'generate_after_entry_content', 'gp_child_display_after_content_widget_area', 8 );
+    add_action( 'generate_after_entry_content', 'gp_child_display_after_content_widget_area', 1 );
     add_action( 'generate_after_entry_content', 'gppress_tags_before_related', 9);
     add_action( 'generate_after_entry_content', 'gp_render_post_footer_sections', 11 );
     add_action( 'generate_after_entry_content', 'gp_series_posts_output', 15 );
