@@ -20,15 +20,13 @@ Author: Jules
                 <?php endif; ?>
                 <div class="related-posts-content">
                     <h4 class="related-posts-post-title"><?php the_title(); ?></h4>
-                    <div class="related-posts-meta">
+                    <div class="related-posts-details">
                         <span class="related-posts-date"><?php echo get_the_date(); ?></span>
                         <span class="related-posts-reading-time"><?php echo gp_get_reading_time( get_the_ID() ); ?></span>
-                    </div>
-                    <div class="related-posts-categories">
-                        <?php the_category(', '); ?>
+                        <span class="related-posts-categories"><?php the_category(', '); ?></span>
                     </div>
                     <div class="related-posts-tags">
-                        <?php the_tags('', '', ''); ?>
+                        <?php echo get_the_term_list( get_the_ID(), 'post_tag', '', ', ', '' ); ?>
                     </div>
                 </div>
             </a>
