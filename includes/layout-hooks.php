@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Layout setup
 function gp_layout_setup() {
+    echo '<p>layout setup 실행됨</p>';
     remove_action( 'generate_after_entry_title', 'generate_post_meta' );
     remove_action( 'generate_after_entry_header', 'generate_post_meta' );
     remove_action( 'generate_after_entry_header', 'generate_post_image' );
