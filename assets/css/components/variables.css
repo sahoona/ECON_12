@@ -11,7 +11,7 @@
     /* Text Colors */
     --text-primary: #343a40;     /* Main text - Light Mode */
     --text-secondary: #495057;   /* Secondary text - Light Mode */
-    --text-muted: #6c757d;       /* Muted text - Light Mode */
+    --text-muted: #000000;       /* Muted text - Light Mode */
     --text-heading: #111111;     /* Headings - Light Mode */
     --text-link: #8cbaff;        /* Links - Light Mode */
 

@@ -224,7 +224,7 @@ body:not(.single) .site-main article.post .entry-title {
 
 /* 3. Unify "Published:" label color to muted gray */
 .posted-on-wrapper .date-secondary .date-label {
-    color: var(--text-primary) !important;
+    color: #333333 !important;
 }
 
 /* 4. Ensure the date number itself has the standard primary text color */
