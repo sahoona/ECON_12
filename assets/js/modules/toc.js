@@ -133,67 +133,58 @@ export function generateClientSideTOC() {
 
     if (tocList.children.length > 0) {
         tocContainer.style.display = '';
-    } else {
-        tocContainer.style.display = 'none';
-    }
-}
 
-export function setupTOC() {
-    const tocContainer = document.getElementById('gp-toc-container');
-    if (tocContainer) {
+        // Setup TOC interactivity
         const tocTitle = tocContainer.querySelector('.gp-toc-title');
         const tocToggle = tocContainer.querySelector('.gp-toc-toggle');
-        const tocList = tocContainer.querySelector('.gp-toc-list');
         if (tocTitle && tocList) {
-            if (tocTitle.dataset.listenerAttached === 'true') {
-                return;
-            }
-            tocTitle.style.cursor = 'pointer';
-            tocTitle.addEventListener('click', function(e) {
-                e.preventDefault();
-                tocList.classList.toggle('toc-list-hidden');
-                const isHidden = tocList.classList.contains('toc-list-hidden');
+            if (tocTitle.dataset.listenerAttached !== 'true') {
+                tocTitle.style.cursor = 'pointer';
+                tocTitle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    tocList.classList.toggle('toc-list-hidden');
+                    const isHidden = tocList.classList.contains('toc-list-hidden');
 
-                if (tocToggle) {
-                    if (isHidden) {
-                        tocToggle.classList.remove('show');
-                        tocToggle.textContent = '[SHOW]';
-                    } else {
-                        tocToggle.classList.add('show');
-                        tocToggle.textContent = '[HIDE]';
+                    if (tocToggle) {
+                        if (isHidden) {
+                            tocToggle.classList.remove('show');
+                            tocToggle.textContent = '[SHOW]';
+                        } else {
+                            tocToggle.classList.add('show');
+                            tocToggle.textContent = '[HIDE]';
+                        }
                     }
+                });
+                tocTitle.dataset.listenerAttached = 'true';
+            }
+        }
+
+        // "Show More" functionality
+        const tocHeight = tocList.offsetHeight;
+        if (tocHeight > 400) {
+            tocList.classList.add('toc-collapsed');
+            const showMoreContainer = document.createElement('div');
+            showMoreContainer.classList.add('gp-toc-show-more-container');
+            const showMoreButton = document.createElement('button');
+            showMoreButton.textContent = '펼치기';
+            showMoreButton.classList.add('gp-toc-show-more-button');
+            showMoreContainer.appendChild(showMoreButton);
+            tocContainer.appendChild(showMoreContainer);
+
+            showMoreButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (tocList.classList.contains('toc-collapsed')) {
+                    tocList.classList.remove('toc-collapsed');
+                    tocList.classList.add('toc-expanded');
+                    showMoreButton.textContent = '숨기기';
+                } else {
+                    tocList.classList.remove('toc-expanded');
+                    tocList.classList.add('toc-collapsed');
+                    showMoreButton.textContent = '펼치기';
                 }
             });
-            tocTitle.dataset.listenerAttached = 'true';
         }
-
-        if (tocList && tocList.children.length > 0) {
-            setTimeout(() => {
-                const tocHeight = tocList.offsetHeight;
-                if (tocHeight > 400) {
-                    tocList.classList.add('toc-collapsed');
-                    const showMoreLi = document.createElement('li');
-                    showMoreLi.classList.add('gp-toc-show-more-li');
-                    const showMoreButton = document.createElement('button');
-                    showMoreButton.textContent = 'Show More';
-                    showMoreButton.classList.add('gp-toc-show-more-button');
-                    showMoreLi.appendChild(showMoreButton);
-                    tocList.appendChild(showMoreLi);
-
-                    showMoreButton.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        if (tocList.classList.contains('toc-collapsed')) {
-                            tocList.classList.remove('toc-collapsed');
-                            tocList.classList.add('toc-expanded');
-                            showMoreButton.textContent = 'Show Less';
-                        } else {
-                            tocList.classList.remove('toc-expanded');
-                            tocList.classList.add('toc-collapsed');
-                            showMoreButton.textContent = 'Show More';
-                        }
-                    });
-                }
-            }, 100);
-        }
+    } else {
+        tocContainer.style.display = 'none';
     }
 }
