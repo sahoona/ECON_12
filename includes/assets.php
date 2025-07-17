@@ -100,6 +100,19 @@ function gp_child_enqueue_assets() {
         }
     }
 
+    // Enqueue YARPP custom CSS
+    if (is_singular()) {
+        $yarpp_custom_css_path = '/yarpp-custom.css';
+        if (file_exists($theme_dir . $yarpp_custom_css_path)) {
+            wp_enqueue_style(
+                'gp-yarpp-custom-style',
+                get_stylesheet_directory_uri() . $yarpp_custom_css_path,
+                ['gp-series-style'],
+                filemtime($theme_dir . $yarpp_custom_css_path)
+            );
+        }
+    }
+
 
 
     $localized_data = [
