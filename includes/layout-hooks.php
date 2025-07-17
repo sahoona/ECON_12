@@ -25,7 +25,11 @@ function gp_layout_setup() {
     add_action( 'generate_after_entry_content', 'gp_series_posts_output', 15 );
     add_action( 'generate_after_entry_content', 'gp_custom_post_navigation_output', 20 );
 
-    add_action( 'generate_before_entry_content', 'gp_featured_image_output', 5 );
+    if ( !is_singular() ) {
+        add_action( 'generate_after_entry_header', 'gp_featured_image_output', 15 );
+    } else {
+        add_action( 'generate_before_entry_content', 'gp_featured_image_output', 5 );
+    }
     add_action( 'generate_after_entry_content', 'gp_read_more_btn_output', 1 );
     add_action( 'generate_after_entry_content', 'gp_add_tags_to_list', 2 );
     add_action( 'generate_after_entry_content', 'gp_add_star_rating_to_list', 3 );

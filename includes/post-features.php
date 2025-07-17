@@ -126,12 +126,6 @@ function gp_language_switcher_output() {
 }
 
 function gp_featured_image_output() {
-    static $has_run = false;
-    if ($has_run) {
-        return;
-    }
-    $has_run = true;
-
     if ( ! has_post_thumbnail() ) return;
 
     $is_singular_page = is_singular();
