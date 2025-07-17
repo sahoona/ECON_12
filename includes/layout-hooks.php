@@ -36,7 +36,7 @@ function gp_layout_setup() {
 
     add_action( 'wp_footer', 'gp_add_footer_elements_and_scripts' );
 }
-add_action( 'wp', 'gp_layout_setup' );
+add_action( 'template_redirect', 'gp_layout_setup' );
 
 
 // add_filter( 'generate_copyright', '__return_empty_string' );
