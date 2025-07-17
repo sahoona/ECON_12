@@ -168,21 +168,32 @@ export function setupTOC() {
         }
 
         if (tocList && tocList.children.length > 0) {
-            const clampOptions = {
-                clamp: '400px',
-                truncationChar: '',
-                truncationHTML: '<a href="#" class="gp-toc-show-more-button">Show More</a>'
-            };
-            $clamp(tocList, clampOptions);
+            setTimeout(() => {
+                const tocHeight = tocList.offsetHeight;
+                if (tocHeight > 400) {
+                    tocList.classList.add('toc-collapsed');
+                    const showMoreLi = document.createElement('li');
+                    showMoreLi.classList.add('gp-toc-show-more-li');
+                    const showMoreButton = document.createElement('button');
+                    showMoreButton.textContent = 'Show More';
+                    showMoreButton.classList.add('gp-toc-show-more-button');
+                    showMoreLi.appendChild(showMoreButton);
+                    tocList.appendChild(showMoreLi);
 
-            const showMoreButton = tocList.querySelector('.gp-toc-show-more-button');
-            if (showMoreButton) {
-                showMoreButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    tocList.style.maxHeight = 'none';
-                    this.style.display = 'none';
-                });
-            }
+                    showMoreButton.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        if (tocList.classList.contains('toc-collapsed')) {
+                            tocList.classList.remove('toc-collapsed');
+                            tocList.classList.add('toc-expanded');
+                            showMoreButton.textContent = 'Show Less';
+                        } else {
+                            tocList.classList.remove('toc-expanded');
+                            tocList.classList.add('toc-collapsed');
+                            showMoreButton.textContent = 'Show More';
+                        }
+                    });
+                }
+            }, 100);
         }
     }
 }

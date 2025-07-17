@@ -30,11 +30,15 @@
     max-height: 400px !important;
     overflow: hidden !important;
     position: relative;
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
 }
 
 #gp-toc-container .gp-toc-list.toc-expanded {
     max-height: 10000px !important; /* A large value to ensure it expands fully */
     overflow: visible !important;
+    -webkit-mask-image: none;
+    mask-image: none;
 }
 
 #gp-toc-container .gp-toc-title {
@@ -130,22 +134,29 @@
 }
 
 .gp-toc-show-more-li {
-    position: sticky;
+    position: absolute;
     bottom: 0;
+    left: 0;
+    width: 100%;
     text-align: center;
-    margin-top: -2rem; /* Overlap the gradient */
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-    background: linear-gradient(to top, var(--bg-secondary) 70%, transparent);
+    padding: 1rem 0;
+    background: var(--bg-secondary);
 }
 
 .gp-toc-show-more-button {
     cursor: pointer;
-    border: none;
-    background: none;
-    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    background: var(--accent-color);
+    color: white;
     font-weight: bold;
     padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.gp-toc-show-more-button:hover {
+    background: var(--bg-secondary);
+    color: var(--accent-color);
 }
 
 div#gp-toc-container > ol.gp-toc-list > li.toc-heading-level-2 > a {
