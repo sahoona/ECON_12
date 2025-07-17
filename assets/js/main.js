@@ -35,5 +35,7 @@ if (document.getElementById('gp-toc-container')) {
     generateClientSideTOC();
 }
 
-initAllAds();
-setTimeout(initAllAds, 1000);
+// Initialize ads after the window and all its resources have finished loading.
+window.onload = function() {
+    initAllAds();
+};
