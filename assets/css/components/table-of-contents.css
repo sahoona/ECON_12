@@ -146,7 +146,7 @@
     cursor: pointer;
     border: none;
     background: transparent;
-    color: var(--text-muted);
+    color: #000000;
     font-weight: bold;
     padding: 0.5rem 1rem;
     text-shadow: none;
