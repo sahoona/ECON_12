@@ -173,12 +173,12 @@ export function generateClientSideTOC() {
             showMoreContainer.classList.add('gp-toc-show-more-container');
 
             const showMoreButton = document.createElement('button');
-            showMoreButton.innerHTML = 'Show more <span class="arrow down"></span>';
+            showMoreButton.innerHTML = '<div>Show more</div><div class="arrow-wrapper"><span class="arrow down"></span></div>';
             showMoreButton.classList.add('gp-toc-show-more-button');
-            showMoreButton.style.display = 'block';
+            showMoreButton.style.display = 'flex';
 
             const hideButton = document.createElement('button');
-            hideButton.innerHTML = 'Hide <span class="arrow up"></span>';
+            hideButton.innerHTML = '<div>Hide</div><div class="arrow-wrapper"><span class="arrow up"></span></div>';
             hideButton.classList.add('gp-toc-hide-button');
             hideButton.style.display = 'none';
 

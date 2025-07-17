@@ -157,6 +157,13 @@
     align-items: center;
 }
 
+.gp-toc-show-more-button .arrow-wrapper,
+.gp-toc-hide-button .arrow-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 .gp-toc-show-more-button .arrow,
 .gp-toc-hide-button .arrow {
     display: inline-block;
