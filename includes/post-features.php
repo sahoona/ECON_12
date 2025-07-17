@@ -227,7 +227,18 @@ function gp_read_more_btn_output(){
 	$link_text = 'Read More<span class="sr-only"> about ' . esc_html( $post_title ) . '</span>';
 	echo '<div class="read-more-container"><a href="'.esc_url( get_permalink() ).'" class="gp-read-more-btn" aria-label="' . esc_attr( $read_more_label ) . '">' . $link_text . '</a></div>';
 }
-function gp_add_tags_to_list(){ if(!is_singular()&&has_tag()){ echo '<div class="list-tags-container">'; the_tags('',' ',''); echo '</div>'; }}
+function gp_add_tags_to_list(){
+    if ( ! is_singular() && has_tag() ) {
+        $tags = get_the_tags();
+        if ( $tags ) {
+            echo '<div class="list-tags-container">';
+            foreach ( $tags as $tag ) {
+                echo '<a href="' . esc_url( get_tag_link( $tag->term_id ) ) . '" rel="tag">' . esc_html( $tag->name ) . '</a>';
+            }
+            echo '</div>';
+        }
+    }
+}
 
 function gp_add_star_rating_to_list() {
     if ( is_singular() ) return;

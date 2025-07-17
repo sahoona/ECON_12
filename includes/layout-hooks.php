@@ -33,6 +33,15 @@ function gp_layout_setup() {
 }
 add_action( 'wp', 'gp_layout_setup' );
 
+// Add read more and tags to non-single posts
+function gp_add_read_more_and_tags_to_list() {
+    if ( ! is_singular() ) {
+        gp_read_more_btn_output();
+        gp_add_tags_to_list();
+    }
+}
+add_action( 'generate_after_entry_summary', 'gp_add_read_more_and_tags_to_list' );
+
 
 // add_filter( 'generate_copyright', '__return_empty_string' );
 add_filter( 'generate_show_categories', '__return_false' );
