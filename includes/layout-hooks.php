@@ -45,6 +45,7 @@ add_filter( 'generate_excerpt_more_output', function() { return ' …'; } );
 
 // Register "After Entry Content" widget area
 function gp_child_register_widget_areas() {
+    var_dump("gp_child_register_widget_areas function executed!");
     register_sidebar( array(
         'name'          => '본문 끝 위젯 영역',
         'id'            => 'after_entry_content_widget_area',
