@@ -168,25 +168,26 @@ export function setupTOC() {
         }
 
         if (tocList && tocList.children.length > 0) {
-            // New logic to handle "Show More" button
-            const tocHeight = tocList.offsetHeight;
-            if (tocHeight > 400) {
-                tocList.classList.add('toc-collapsed');
-                const showMoreLi = document.createElement('li');
-                showMoreLi.classList.add('gp-toc-show-more-li');
-                const showMoreButton = document.createElement('button');
-                showMoreButton.textContent = 'Show More';
-                showMoreButton.classList.add('gp-toc-show-more-button');
-                showMoreLi.appendChild(showMoreButton);
-                tocContainer.appendChild(showMoreLi);
+            setTimeout(() => {
+                const tocHeight = tocList.offsetHeight;
+                if (tocHeight > 400) {
+                    tocList.classList.add('toc-collapsed');
+                    const showMoreLi = document.createElement('li');
+                    showMoreLi.classList.add('gp-toc-show-more-li');
+                    const showMoreButton = document.createElement('button');
+                    showMoreButton.textContent = 'Show More';
+                    showMoreButton.classList.add('gp-toc-show-more-button');
+                    showMoreLi.appendChild(showMoreButton);
+                    tocContainer.appendChild(showMoreLi);
 
-                showMoreButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    tocList.classList.remove('toc-collapsed');
-                    tocList.classList.add('toc-expanded');
-                    showMoreLi.style.display = 'none';
-                });
-            }
+                    showMoreButton.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        tocList.classList.remove('toc-collapsed');
+                        tocList.classList.add('toc-expanded');
+                        showMoreLi.style.display = 'none';
+                    });
+                }
+            }, 100);
         }
     }
 }
