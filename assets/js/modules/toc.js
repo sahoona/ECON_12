@@ -168,19 +168,23 @@ export function setupTOC() {
         }
 
         if (tocList && tocList.children.length > 0) {
-            const clampOptions = {
-                clamp: '400px',
-                truncationChar: '',
-                truncationHTML: '<a href="#" class="gp-toc-show-more-button">Show More</a>'
-            };
-            $clamp(tocList, clampOptions);
+            // New logic to handle "Show More" button
+            const tocHeight = tocList.offsetHeight;
+            if (tocHeight > 400) {
+                tocList.classList.add('toc-collapsed');
+                const showMoreLi = document.createElement('li');
+                showMoreLi.classList.add('gp-toc-show-more-li');
+                const showMoreButton = document.createElement('button');
+                showMoreButton.textContent = 'Show More';
+                showMoreButton.classList.add('gp-toc-show-more-button');
+                showMoreLi.appendChild(showMoreButton);
+                tocContainer.appendChild(showMoreLi);
 
-            const showMoreButton = tocList.querySelector('.gp-toc-show-more-button');
-            if (showMoreButton) {
                 showMoreButton.addEventListener('click', function(e) {
                     e.preventDefault();
-                    tocList.style.maxHeight = 'none';
-                    this.style.display = 'none';
+                    tocList.classList.remove('toc-collapsed');
+                    tocList.classList.add('toc-expanded');
+                    showMoreLi.style.display = 'none';
                 });
             }
         }

@@ -141,11 +141,18 @@
 
 .gp-toc-show-more-button {
     cursor: pointer;
-    border: none;
-    background: none;
-    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    background: var(--accent-color);
+    color: white;
     font-weight: bold;
     padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.gp-toc-show-more-button:hover {
+    background: var(--bg-secondary);
+    color: var(--accent-color);
 }
 
 div#gp-toc-container > ol.gp-toc-list > li.toc-heading-level-2 > a {
