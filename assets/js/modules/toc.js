@@ -166,5 +166,23 @@ export function setupTOC() {
             });
             tocTitle.dataset.listenerAttached = 'true';
         }
+
+        if (tocList && tocList.children.length > 0) {
+            const clampOptions = {
+                clamp: '400px',
+                truncationChar: '',
+                truncationHTML: '<a href="#" class="gp-toc-show-more-button">Show More</a>'
+            };
+            $clamp(tocList, clampOptions);
+
+            const showMoreButton = tocList.querySelector('.gp-toc-show-more-button');
+            if (showMoreButton) {
+                showMoreButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    tocList.style.maxHeight = 'none';
+                    this.style.display = 'none';
+                });
+            }
+        }
     }
 }
