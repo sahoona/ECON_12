@@ -163,13 +163,13 @@ export function generateClientSideTOC() {
         const tocHeight = tocList.offsetHeight;
         if (tocHeight > 400) {
             tocList.classList.add('toc-collapsed');
-            const showMoreLi = document.createElement('li');
-            showMoreLi.classList.add('gp-toc-show-more-li');
+            const showMoreContainer = document.createElement('div');
+            showMoreContainer.classList.add('gp-toc-show-more-container');
             const showMoreButton = document.createElement('button');
             showMoreButton.textContent = '펼치기';
             showMoreButton.classList.add('gp-toc-show-more-button');
-            showMoreLi.appendChild(showMoreButton);
-            tocList.appendChild(showMoreLi);
+            showMoreContainer.appendChild(showMoreButton);
+            tocContainer.appendChild(showMoreContainer);
 
             showMoreButton.addEventListener('click', function(e) {
                 e.preventDefault();

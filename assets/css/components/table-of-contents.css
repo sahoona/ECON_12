@@ -133,14 +133,17 @@
     display: none !important;
 }
 
-.gp-toc-show-more-li {
+#gp-toc-container {
+    position: relative;
+    padding-bottom: 4rem; /* Add padding to make space for the button */
+}
+
+.gp-toc-show-more-container {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
     text-align: center;
-    padding: 1rem 0;
-    background: var(--bg-secondary);
 }
 
 .gp-toc-show-more-button {
