@@ -621,8 +621,16 @@ main#main {
         text-align: center !important;
     }
 
+    .site-footer-container .footer-about {
+        width: 100% !important;
+    }
+
     .site-footer-container .footer-about p {
         padding: 0 !important;
+    }
+
+    .site-footer-container .footer-links ul li {
+        display: block !important;
     }
 }
 
