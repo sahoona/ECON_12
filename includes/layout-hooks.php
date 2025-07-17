@@ -9,11 +9,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-// Layout setup
-function gp_layout_setup() {
+// Remove default actions
+add_action('after_setup_theme', function() {
     remove_action( 'generate_after_entry_title', 'generate_post_meta' );
     remove_action( 'generate_after_entry_header', 'generate_post_meta' );
     remove_action( 'generate_after_entry_header', 'generate_post_image' );
+});
+
+// Add custom actions
+function gp_child_theme_layout_hooks() {
     add_filter( 'generate_show_post_navigation', '__return_false' );
 
     add_action( 'generate_before_entry_title', 'gp_breadcrumb_output', 5 );
@@ -36,7 +40,7 @@ function gp_layout_setup() {
 
     add_action( 'wp_footer', 'gp_add_footer_elements_and_scripts' );
 }
-add_action( 'template_redirect', 'gp_layout_setup' );
+add_action( 'template_redirect', 'gp_child_theme_layout_hooks' );
 
 
 // add_filter( 'generate_copyright', '__return_empty_string' );
