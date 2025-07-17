@@ -134,6 +134,30 @@ export function generateClientSideTOC() {
     if (tocList.children.length > 0) {
         tocContainer.style.display = '';
 
+        // Setup TOC interactivity
+        const tocTitle = tocContainer.querySelector('.gp-toc-title');
+        const tocToggle = tocContainer.querySelector('.gp-toc-toggle');
+        if (tocTitle && tocList) {
+            if (tocTitle.dataset.listenerAttached !== 'true') {
+                tocTitle.style.cursor = 'pointer';
+                tocTitle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    tocList.classList.toggle('toc-list-hidden');
+                    const isHidden = tocList.classList.contains('toc-list-hidden');
+
+                    if (tocToggle) {
+                        if (isHidden) {
+                            tocToggle.classList.remove('show');
+                            tocToggle.textContent = '[SHOW]';
+                        } else {
+                            tocToggle.classList.add('show');
+                            tocToggle.textContent = '[HIDE]';
+                        }
+                    }
+                });
+                tocTitle.dataset.listenerAttached = 'true';
+            }
+        }
 
         // "Show More" functionality
         const tocHeight = tocList.offsetHeight;
