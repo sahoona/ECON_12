@@ -23,8 +23,8 @@ function econarc_insert_manual_ads( $content ) {
     $ad_client   = get_theme_mod( 'econarc_ad_client' );
     $ad_slot     = get_theme_mod( 'econarc_ad_slot' );
 
-    // 광고가 비활성화되었거나, ID 값이 없으면 실행하지 않음
-    if ( ! $ads_enabled || empty( $ad_client ) || empty( $ad_slot ) ) {
+    // 광고가 비활성화되었거나, 필수 ID 값이 없으면 실행하지 않음
+    if ( ! $ads_enabled || empty( trim( $ad_client ) ) || empty( trim( $ad_slot ) ) ) {
         return $content;
     }
 
@@ -115,7 +115,8 @@ function econarc_homepage_top_ad() {
         $ad_client   = get_theme_mod( 'econarc_ad_client' );
         $ad_slot     = get_theme_mod( 'econarc_top_ad_slot' );
 
-        if ( $ads_enabled && !empty($ad_client) && !empty($ad_slot) ) {
+        // 광고가 활성화되었고, 필수 ID 값이 모두 있을 때만 광고 출력
+        if ( $ads_enabled && ! empty( trim( $ad_client ) ) && ! empty( trim( $ad_slot ) ) ) {
             // 헤더 바로 아래, 메인 콘텐츠 시작 전에 광고 출력
             echo '<div class="manual-ad-container top-ad-container" style="margin-top: 20px; margin-bottom: 20px; text-align: center;"><ins class="adsbygoogle" style="display:block" data-ad-client="' . esc_attr($ad_client) . '" data-ad-slot="' . esc_attr($ad_slot) . '" data-ad-format="auto" data-full-width-responsive="true"></ins></div>';
         }
@@ -152,7 +153,8 @@ function econarc_homepage_in_feed_ad() {
         $ad_client = get_theme_mod( 'econarc_ad_client' );
         $ad_slot   = get_theme_mod( 'econarc_infeed_ad_slot' );
 
-        if ( !empty($ad_client) && !empty($ad_slot) ) {
+        // 필수 ID 값이 모두 있을 때만 광고 출력
+        if ( ! empty( trim( $ad_client ) ) && ! empty( trim( $ad_slot ) ) ) {
             echo '<article class="post type-post status-publish format-standard hentry manual-ad-article"><div class="inside-article" style="padding:0; border:none; background:transparent;"><div class="manual-ad-container in-feed-ad"><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="' . esc_attr($ad_client) . '" data-ad-slot="' . esc_attr($ad_slot) . '"></ins></div></div></article>';
         }
     }
