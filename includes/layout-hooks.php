@@ -30,8 +30,21 @@ function gp_layout_setup() {
     add_action( 'generate_before_entry_content', 'gp_featured_image_output', 5 );
 
     add_action( 'wp_footer', 'gp_add_footer_elements_and_scripts' );
+
+    // Add elements to archive posts
+    add_action( 'generate_after_entry_summary', 'gp_add_archive_post_elements' );
 }
 add_action( 'wp', 'gp_layout_setup' );
+
+function gp_add_archive_post_elements() {
+    if ( is_singular() ) {
+        return;
+    }
+
+    gp_read_more_btn_output();
+    gp_add_tags_to_list();
+    gp_add_star_rating_to_list();
+}
 
 
 // add_filter( 'generate_copyright', '__return_empty_string' );
