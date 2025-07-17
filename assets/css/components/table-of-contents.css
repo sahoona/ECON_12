@@ -151,11 +151,9 @@
     color: var(--text-muted);
     font-weight: bold;
     padding: 0.5rem 1rem;
-    transition: color 0.3s;
 }
 
 .gp-toc-show-more-button:hover {
-    color: var(--accent-color);
 }
 
 #gp-toc-container .gp-toc-list.toc-expanded + .gp-toc-show-more-container .gp-toc-show-more-button {
