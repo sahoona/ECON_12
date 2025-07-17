@@ -129,7 +129,6 @@ function gp_featured_image_output() {
     if ( ! has_post_thumbnail() ) return;
 
     $is_singular_page = is_singular();
-    $image_size_to_use = $is_singular_page ? 'full' : 'large-thumb';
     $post_id = get_the_ID();
     $thumbnail_id = get_post_thumbnail_id($post_id);
     $image_alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
@@ -137,33 +136,39 @@ function gp_featured_image_output() {
         $image_alt = get_the_title($post_id);
     }
 
-    $fetch_priority_attr = $is_singular_page ? ' fetchpriority="high"' : '';
-    $image_src_array = wp_get_attachment_image_src($thumbnail_id, $image_size_to_use);
-    if ( !$image_src_array ) return;
-
-    $image_url = $image_src_array[0];
-    $width = $image_src_array[1];
-    $height = $image_src_array[2];
-    $srcset = wp_get_attachment_image_srcset($thumbnail_id, $image_size_to_use);
-
-    if ( $is_singular_page ) {
-        $sizes = '(max-width: 940px) 100vw, 940px';
+    $image_html = '';
+    if ($is_singular_page) {
+        // Singular page logic (existing logic can be kept or adjusted)
+        $image_size_to_use = 'full';
+        $fetch_priority_attr = ' fetchpriority="high"';
+        $image_src_array = wp_get_attachment_image_src($thumbnail_id, $image_size_to_use);
+        if ($image_src_array) {
+            $image_url = $image_src_array[0];
+            $width = $image_src_array[1];
+            $height = $image_src_array[2];
+            $srcset = wp_get_attachment_image_srcset($thumbnail_id, $image_size_to_use);
+            $sizes = '(max-width: 940px) 100vw, 940px';
+            $image_html = sprintf(
+                '<img src="%s" srcset="%s" sizes="%s" alt="%s" width="%d" height="%d" class="attachment-%s size-%s wp-post-image"%s>',
+                esc_url($image_url), esc_attr($srcset), esc_attr($sizes), esc_attr($image_alt),
+                esc_attr($width), esc_attr($height), esc_attr($image_size_to_use), esc_attr($image_size_to_use), $fetch_priority_attr
+            );
+        }
     } else {
-        $sizes = '(max-width: 800px) 100vw, 800px';
+        // Non-singular page (homepage/archives) logic to match AJAX handler
+        $image_src_data = wp_get_attachment_image_src($thumbnail_id, 'medium_large');
+        if ($image_src_data) {
+            $image_url = $image_src_data[0];
+            $width = $image_src_data[1];
+            $height = $image_src_data[2];
+            $placeholder_src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+            $image_html = sprintf(
+                '<img src="%s" data-src="%s" alt="%s" width="%d" height="%d" class="lazy-load">',
+                esc_url($placeholder_src), esc_url($image_url), esc_attr($image_alt),
+                esc_attr($width), esc_attr($height)
+            );
+        }
     }
-
-    $image_html = sprintf(
-        '<img src="%s" srcset="%s" sizes="%s" alt="%s" width="%d" height="%d" class="attachment-%s size-%s wp-post-image"%s>',
-        esc_url($image_url),
-        esc_attr($srcset),
-        esc_attr($sizes),
-        esc_attr($image_alt),
-        esc_attr($width),
-        esc_attr($height),
-        esc_attr($image_size_to_use),
-        esc_attr($image_size_to_use),
-        $fetch_priority_attr
-    );
 
     $post_time = get_the_time('U');
     $modified_time = get_the_modified_time('U');
