@@ -193,47 +193,29 @@ function gp_load_more_posts_ajax_handler() {
         ob_start();
         while ($query->have_posts()) : $query->the_post();
             ?>
-            <article id="post-<?php the_ID(); ?>" <?php post_class('ajax-loaded-card'); ?>>
+            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 <div class="inside-article">
                     <?php
-                    echo '<header class="entry-header">';
-                    $categories_list = get_the_category_list(', ');
-                    if (!empty($categories_list)) {
-                        echo '<div class="gp-post-category">' . wp_kses_post($categories_list) . '</div>';
+                    // Display categories
+                    if (function_exists('gp_home_breadcrumb_output')) {
+                        gp_home_breadcrumb_output();
                     }
+
+                    // Display title
                     the_title(sprintf('<h2 class="entry-title" itemprop="headline"><a href="%s" rel="bookmark">', esc_url(get_permalink())), '</a></h2>');
-                    echo '</header>';
+
+                    // Display featured image
                     if (function_exists('gp_featured_image_output')) {
-                        // gp_featured_image_output 함수를 직접 호출하는 대신,
-                        // 해당 함수 내부 로직을 가져와 AJAX 핸들러에 맞게 수정합니다.
-                        if (has_post_thumbnail()) {
-                            $post_id = get_the_ID();
-                            $thumbnail_id = get_post_thumbnail_id($post_id);
-                            $image_alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) ?: get_the_title($post_id);
-                            $image_src_data = wp_get_attachment_image_src($thumbnail_id, 'medium_large');
-
-                            if ($image_src_data) {
-                                $image_url = $image_src_data[0];
-                                $width = $image_src_data[1];
-                                $height = $image_src_data[2];
-                                $placeholder_src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
-
-                                $image_html = sprintf(
-                                    '<img src="%s" data-src="%s" alt="%s" width="%d" height="%d" class="lazy-load">',
-                                    esc_url($placeholder_src),
-                                    esc_url($image_url),
-                                    esc_attr($image_alt),
-                                    esc_attr($width),
-                                    esc_attr($height)
-                                );
-
-                                echo '<div class="post-image"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">' . $image_html . '</a></div>';
-                            }
-                        }
+                        gp_featured_image_output();
                     }
+
+                    // Display excerpt
                     echo '<div class="entry-summary" itemprop="text">';
                     echo wp_kses_post(wp_trim_words(get_the_excerpt(), 60, '...'));
                     echo '</div>';
+
+                    // Display footer meta (read more, tags, stars)
+                    echo '<footer class="entry-meta">';
                     if (function_exists('gp_read_more_btn_output')) {
                         gp_read_more_btn_output();
                     }
@@ -243,7 +225,6 @@ function gp_load_more_posts_ajax_handler() {
                     if (function_exists('gp_add_star_rating_to_list')) {
                         gp_add_star_rating_to_list();
                     }
-                    echo '<footer class="entry-meta">';
                     echo '</footer>';
                     ?>
                 </div>
