@@ -148,7 +148,7 @@ export function generateClientSideTOC() {
                     const isHidden = tocList.classList.contains('toc-list-hidden');
 
                     if (showMoreContainer) {
-                        showMoreContainer.style.display = isHidden ? 'none' : '';
+                        showMoreContainer.style.display = isHidden ? 'none' : 'block';
                     }
 
                     if (tocToggle) {
@@ -172,7 +172,7 @@ export function generateClientSideTOC() {
             const showMoreContainer = document.createElement('div');
             showMoreContainer.classList.add('gp-toc-show-more-container');
             const showMoreButton = document.createElement('button');
-            showMoreButton.textContent = 'Show more';
+            showMoreButton.innerHTML = 'Show more <span class="arrow down"></span>';
             showMoreButton.classList.add('gp-toc-show-more-button');
             showMoreContainer.appendChild(showMoreButton);
 tocContainer.appendChild(showMoreContainer);
@@ -182,11 +182,11 @@ tocContainer.appendChild(showMoreContainer);
                 if (tocList.classList.contains('toc-collapsed')) {
                     tocList.classList.remove('toc-collapsed');
                     tocList.classList.add('toc-expanded');
-                    showMoreButton.textContent = 'Hide';
+                    showMoreButton.innerHTML = 'Hide <span class="arrow up"></span>';
                 } else {
                     tocList.classList.remove('toc-expanded');
                     tocList.classList.add('toc-collapsed');
-                    showMoreButton.textContent = 'Show more';
+                    showMoreButton.innerHTML = 'Show more <span class="arrow down"></span>';
                 }
             });
         }

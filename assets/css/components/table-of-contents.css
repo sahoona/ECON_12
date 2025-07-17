@@ -153,6 +153,23 @@
     padding: 0.5rem 1rem;
 }
 
+.gp-toc-show-more-button .arrow {
+    display: inline-block;
+    width: 0.4em;
+    height: 0.4em;
+    border-right: 0.1em solid;
+    border-bottom: 0.1em solid;
+    margin-left: 0.5em;
+}
+
+.gp-toc-show-more-button .arrow.down {
+    transform: rotate(45deg);
+}
+
+.gp-toc-show-more-button .arrow.up {
+    transform: rotate(-135deg);
+}
+
 .gp-toc-show-more-button:hover {
 }
 
