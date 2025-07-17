@@ -34,3 +34,22 @@ function custom_excerpt_length( $length ) {
     return 60;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+/**
+ * Get the estimated reading time for a post.
+ *
+ * @param int|null $post_id The ID of the post. Defaults to the current post.
+ * @return string The estimated reading time in the format "X min read".
+ */
+function gp_get_reading_time( $post_id = null ) {
+    if ( ! $post_id ) {
+        $post_id = get_the_ID();
+    }
+    $content = get_post_field( 'post_content', $post_id );
+    // More robust word count for multi-byte characters (like Korean)
+    $decoded_content = html_entity_decode( strip_tags( $content ) );
+    $word_count = count(preg_split('/\s+/u', $decoded_content, -1, PREG_SPLIT_NO_EMPTY));
+    $reading_time = ceil( $word_count / 225 ); // Based on includes/post-features.php
+    $reading_time = max( 1, $reading_time );
+    return $reading_time . ' min read';
+}

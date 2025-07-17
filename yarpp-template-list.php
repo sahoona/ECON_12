@@ -7,22 +7,28 @@ Author: Jules
 ?>
 
 <?php if (have_posts()): ?>
-<div class="yarpp-related-list">
-    <h3 class="yarpp-related-title">관련 글</h3>
-    <ol>
+<div class="related-posts-container">
+    <h3 class="related-posts-title">Related Posts</h3>
+    <ol class="related-posts-list">
         <?php while (have_posts()) : the_post(); ?>
-        <li>
-            <a href="<?php the_permalink() ?>" rel="bookmark">
+        <li class="related-posts-item">
+            <a href="<?php the_permalink() ?>" rel="bookmark" class="related-posts-link">
                 <?php if (has_post_thumbnail()):?>
-                <div class="yarpp-thumbnail-container">
+                <div class="related-posts-thumbnail-container">
                     <?php the_post_thumbnail('thumbnail'); ?>
                 </div>
                 <?php endif; ?>
-                <div class="yarpp-post-content">
-                    <span class="yarpp-post-title"><?php the_title(); ?></span>
-                    <div class="yarpp-post-meta">
-                        <span class="yarpp-post-date"><?php echo get_the_date(); ?></span>
-                        <span class="yarpp-reading-time"><?php echo do_shortcode('[rt_reading_time]'); ?> min read</span>
+                <div class="related-posts-content">
+                    <h4 class="related-posts-post-title"><?php the_title(); ?></h4>
+                    <div class="related-posts-meta">
+                        <span class="related-posts-date"><?php echo get_the_date(); ?></span>
+                        <span class="related-posts-reading-time"><?php echo gp_get_reading_time( get_the_ID() ); ?></span>
+                    </div>
+                    <div class="related-posts-categories">
+                        <?php the_category(', '); ?>
+                    </div>
+                    <div class="related-posts-tags">
+                        <?php the_tags('', '', ''); ?>
                     </div>
                 </div>
             </a>
