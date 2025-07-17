@@ -185,13 +185,38 @@ function gp_child_enqueue_assets() {
 
     $custom_css = ':root { --theme-version: "' . esc_attr($theme_version) . '"; }';
     wp_add_inline_style('gp-child-style', $custom_css);
+
+    // Google AdSense 스크립트 비동기 로드
+    $ad_client = get_theme_mod('econarc_ad_client');
+    if ( ! empty( trim( $ad_client ) ) ) {
+        wp_enqueue_script(
+            'google-adsense',
+            'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-' . esc_attr( trim( $ad_client ) ),
+            [],
+            null,
+            true
+        );
+    }
 }
 add_action('wp_enqueue_scripts', 'gp_child_enqueue_assets');
 
-function add_type_attribute($tag, $handle, $src) {
+/**
+ * 스크립트 태그에 async 또는 module type 속성을 추가합니다.
+ *
+ * @param string $tag    The <script> tag for the enqueued script.
+ * @param string $handle The script's handle.
+ * @param string $src    The script's source URL.
+ * @return string Modified <script> tag.
+ */
+function gp_add_script_attributes( $tag, $handle, $src ) {
+    // 애드센스 스크립트에 async 속성 추가
+    if ( 'google-adsense' === $handle ) {
+        return str_replace( ' src', ' async src', $tag );
+    }
+    // 메인 스크립트에 module 타입 추가
     if ( 'gp-main-script' === $handle ) {
-        $tag = '<script type="module" src="' . esc_url( $src ) . '" id="gp-main-script-js"></script>';
+        return '<script type="module" src="' . esc_url( $src ) . '" id="gp-main-script-js"></script>';
     }
     return $tag;
 }
-add_filter('script_loader_tag', 'add_type_attribute' , 10, 3);
+add_filter( 'script_loader_tag', 'gp_add_script_attributes', 10, 3 );
