@@ -169,6 +169,14 @@
     transform: rotate(-135deg);
 }
 
+.gp-toc-show-more-button::after {
+    content: 'Show more ';
+}
+
+.gp-toc-show-more-button.expanded::after {
+    content: 'Hide ';
+}
+
 .gp-toc-show-more-button:hover {
     color: var(--accent-color);
 }

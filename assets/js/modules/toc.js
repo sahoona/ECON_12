@@ -179,15 +179,9 @@ tocContainer.appendChild(showMoreContainer);
 
             showMoreButton.addEventListener('click', function(e) {
                 e.preventDefault();
-                if (tocList.classList.contains('toc-collapsed')) {
-                    tocList.classList.remove('toc-collapsed');
-                    tocList.classList.add('toc-expanded');
-                    showMoreButton.innerHTML = 'Hide <span class="arrow up"></span>';
-                } else {
-                    tocList.classList.remove('toc-expanded');
-                    tocList.classList.add('toc-collapsed');
-                    showMoreButton.innerHTML = 'Show more <span class="arrow down"></span>';
-                }
+                tocList.classList.toggle('toc-collapsed');
+                tocList.classList.toggle('toc-expanded');
+                showMoreButton.classList.toggle('expanded');
             });
         }
     } else {
