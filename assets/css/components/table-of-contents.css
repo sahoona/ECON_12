@@ -146,7 +146,7 @@
 .gp-toc-hide-button {
     cursor: pointer;
     border: none;
-    background-color: transparent;
+    background-color: transparent !important;
     color: #000000;
     font-weight: bold;
     padding: 0.5rem 1rem;
@@ -154,7 +154,8 @@
     transition: color 0.3s ease;
 }
 
-.gp-toc-show-more-button .arrow {
+.gp-toc-show-more-button .arrow,
+.gp-toc-hide-button .arrow {
     display: inline-block;
     width: 0.4em;
     height: 0.4em;
@@ -167,7 +168,8 @@
     transform: rotate(45deg);
 }
 
-.gp-toc-show-more-button .arrow.up {
+.gp-toc-show-more-button .arrow.up,
+.gp-toc-hide-button .arrow.up {
     transform: rotate(-135deg);
 }
 
