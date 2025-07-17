@@ -632,6 +632,14 @@ main#main {
     .site-footer-container .footer-links ul li {
         display: block !important;
     }
+
+    .site-footer-container .footer-heading {
+        width: 100% !important;
+    }
+
+    .site-footer-container .footer-links ul li a {
+        display: block !important;
+    }
 }
 
 @media (max-width: 480px) {
