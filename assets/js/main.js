@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', setupFloatingButtons);
 setupSidebar();
 setupURLCopy();
 setupProgressBar();
-setupTOC();
 setupStarRating($);
 setupReactionButtons($);
 setupPostedDateToggles();
@@ -34,6 +33,7 @@ setupSeriesLoadMoreButton($);
 
 if (document.getElementById('gp-toc-container')) {
     generateClientSideTOC();
+    setupTOC();
 }
 
 initAllAds();
