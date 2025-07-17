@@ -37,9 +37,9 @@ add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 // Register "After Entry Content" widget area
 function gp_child_register_widget_areas() {
     register_sidebar( array(
-        'name'          => __( '본문 끝 위젯 영역', 'gp-child-theme' ),
+        'name'          => '본문 끝 위젯 영역',
         'id'            => 'after_entry_content_widget_area',
-        'description'   => __( '글 본문 내용이 끝나는 지점, 태그 박스 위에 표시됩니다.', 'gp-child-theme' ),
+        'description'   => '글 본문 내용이 끝나는 지점, 태그 박스 위에 표시됩니다.',
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h2 class="widget-title">',
