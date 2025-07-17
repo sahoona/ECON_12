@@ -101,7 +101,6 @@
 #gp-toc-container a {
     text-decoration: none;
     color: var(--text-secondary);
-    transition: color 0.2s ease;
 }
 
 #gp-toc-container a:hover {
@@ -171,6 +170,7 @@
 }
 
 .gp-toc-show-more-button:hover {
+    background: none;
 }
 
 #gp-toc-container .gp-toc-list.toc-expanded + .gp-toc-show-more-container .gp-toc-show-more-button {
