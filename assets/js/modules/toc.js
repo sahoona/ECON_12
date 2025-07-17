@@ -178,7 +178,7 @@ export function generateClientSideTOC() {
             showMoreButton.style.display = 'flex';
 
             const hideButton = document.createElement('button');
-            hideButton.innerHTML = '<div>Hide</div><div class="arrow-wrapper"><span class="arrow up"></span></div>';
+            hideButton.innerHTML = '<div class="arrow-wrapper"><span class="arrow up"></span></div><div>Hide</div>';
             hideButton.classList.add('gp-toc-hide-button');
             hideButton.style.display = 'none';
 
