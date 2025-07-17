@@ -23,19 +23,20 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    opacity: 0;
 }
 
 #gp-toc-container .gp-toc-list.toc-collapsed {
-    max-height: 400px !important;
-    overflow: hidden !important;
-    position: relative;
+    grid-template-rows: 0fr;
+    opacity: 0;
 }
 
 #gp-toc-container .gp-toc-list.toc-expanded {
-    max-height: 10000px !important; /* A large value to ensure it expands fully */
-    overflow: visible !important;
-    -webkit-mask-image: none;
-    mask-image: none;
+    grid-template-rows: 1fr;
+    opacity: 1;
 }
 
 #gp-toc-container .gp-toc-title {
@@ -159,6 +160,7 @@
     border-right: 0.1em solid;
     border-bottom: 0.1em solid;
     margin-left: 0.5em;
+    transition: transform 0.3s ease-in-out;
 }
 
 .gp-toc-show-more-button .arrow.down {
