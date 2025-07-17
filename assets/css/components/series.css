@@ -1,18 +1,17 @@
 .entry-content .seriesbox .center a,
 .post-content .seriesbox .center a {
-    font-family: var(--font-extrabold-legacy) !important;
-    font-size: 1.5em !important;
-    font-weight: 800 !important;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 1.5em;
+    font-weight: 800;
 }
 .entry-content .seriesbox .serieslist-ul li,
 .post-content .seriesbox .serieslist-ul li {
-    font-family: var(--font-main) !important;
+    font-family: 'Pretendard', sans-serif;
     font-size: 1.05em !important;
     line-height: 1.6 !important;
 }
 .entry-content .seriesbox .serieslist-ul li::before,
 .post-content .seriesbox .serieslist-ul li::before {
-    font-family: 'NanumSquareNeoBold', 'Malgun Gothic', sans-serif;
     font-size: 0.9em;
 }
 .entry-content .seriesbox .serieslist-ul .serieslist-li-current a {
@@ -40,17 +39,17 @@
     border-bottom: 2px solid var(--color-border) !important;
 }
 .entry-content .seriesbox .center a, .post-content .seriesbox .center a {
-    font-family: var(--font-extrabold-legacy) !important;
-    font-size: 1.5em !important;
-    font-weight: 800 !important;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 1.5em;
+    font-weight: 800;
     color: #111827 !important;
     text-decoration: none !important;
     border: none !important;
 }
 .entry-content .seriesbox .serieslist-ul, .post-content .seriesbox .serieslist-ul { list-style: none !important; margin: 0 !important; padding: 0 !important; counter-reset: series-counter; }
-.entry-content .seriesbox .serieslist-ul li, .post-content .seriesbox .serieslist-ul li { font-family: var(--font-main) !important; position: relative !important; display: flex !important; align-items: baseline !important; padding: 12px 15px !important; margin: 4px 0 !important; border-radius: 8px; font-size: 1.05em !important; line-height: 1.6 !important; transition: background-color 0.2s ease-in-out; background: none !important; list-style-type: none !important; counter-increment: series-counter; border: none !important; }
+.entry-content .seriesbox .serieslist-ul li, .post-content .seriesbox .serieslist-ul li { font-family: 'Pretendard', sans-serif; position: relative !important; display: flex !important; align-items: baseline !important; padding: 12px 15px !important; margin: 4px 0 !important; border-radius: 8px; font-size: 1.05em !important; line-height: 1.6 !important; transition: background-color 0.2s ease-in-out; background: none !important; list-style-type: none !important; counter-increment: series-counter; border: none !important; }
 .entry-content .seriesbox .serieslist-ul li:not(.serieslist-li-current):hover { background-color: #f0f2f5 !important; }
-.entry-content .seriesbox .serieslist-ul li::before, .post-content .seriesbox .serieslist-ul li::before { position: static !important; font-family: 'NanumSquareNeoBold', 'Malgun Gothic', sans-serif; font-size: 0.9em; color: #6b7280; width: 25px; text-align: center; flex-shrink: 0; margin-right: 25px !important; white-space: nowrap !important; background: none !important; border-radius: 0 !important; padding: 0 !important; transform: none !important; }
+.entry-content .seriesbox .serieslist-ul li::before, .post-content .seriesbox .serieslist-ul li::before { position: static !important; font-size: 0.9em; color: #6b7280; width: 25px; text-align: center; flex-shrink: 0; margin-right: 25px !important; white-space: nowrap !important; background: none !important; border-radius: 0 !important; padding: 0 !important; transform: none !important; }
 .entry-content .seriesbox .serieslist-ul li:not(.serieslist-li-current)::before { content: counter(series-counter, decimal-leading-zero) "." !important; }
 .entry-content .seriesbox .serieslist-ul li a, .post-content .seriesbox .serieslist-ul li a { color: #374151 !important; text-decoration: none !important; flex-grow: 1; font-weight: 500 !important; }
 .entry-content .seriesbox .serieslist-ul li:hover a { color: var(--color-primary) !important; }
