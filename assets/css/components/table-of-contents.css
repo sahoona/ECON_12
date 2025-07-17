@@ -142,14 +142,16 @@
     text-align: center;
 }
 
-.gp-toc-show-more-button {
+.gp-toc-show-more-button,
+.gp-toc-hide-button {
     cursor: pointer;
     border: none;
-    background-color: transparent;
+    background: transparent;
     color: #000000;
     font-weight: bold;
     padding: 0.5rem 1rem;
     text-shadow: none;
+    transition: color 0.3s ease;
 }
 
 .gp-toc-show-more-button .arrow {
@@ -169,14 +171,6 @@
     transform: rotate(-135deg);
 }
 
-.gp-toc-show-more-button::after {
-    content: 'Show more ';
-}
-
-.gp-toc-show-more-button.expanded::after {
-    content: 'Hide ';
-}
-
 .gp-toc-show-more-button:hover {
     color: var(--accent-color);
 }
@@ -186,7 +180,8 @@
 }
 
 html.dark-mode-active #gp-toc-container .gp-toc-list.toc-expanded + .gp-toc-show-more-container .gp-toc-show-more-button,
-html.dark-mode-active .gp-toc-show-more-button {
+html.dark-mode-active .gp-toc-show-more-button,
+html.dark-mode-active .gp-toc-hide-button {
     color: var(--text-muted);
 }
 
