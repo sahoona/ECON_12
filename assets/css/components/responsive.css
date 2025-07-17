@@ -124,7 +124,7 @@
     }
 
     body:not(.single) .site-main article.post {
-        margin: 0 0 100px 0 !important; /* 모바일에서 카드 간격 100px로 증가 */
+        margin: 0 0 20px 0 !important; /* 모바일에서 카드 간격 20px로 수정 */
         border: none !important; /* Ensured active for revert */
         padding-bottom: 0 !important; /* New addition for this revert */
         padding-left: 10px !important; /* Added for mobile card padding */
@@ -146,8 +146,8 @@
         height: auto !important; /* Can be 0px, border is what's seen */
         border-bottom: none !important; /* Light gray dotted line */
         background: none !important; /* Ensure no background color */
-        margin-top: 30px !important; /* Space from card content above */
-        margin-bottom: 30px !important; /* Space before the card's own bottom margin */
+        margin-top: 20px !important; /* Space from card content above */
+        margin-bottom: 20px !important; /* Space before the card's own bottom margin */
         margin-left: auto !important; /* Center the line */
         margin-right: auto !important; /* Center the line */
         visibility: visible !important;
