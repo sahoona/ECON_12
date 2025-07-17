@@ -171,23 +171,39 @@ export function generateClientSideTOC() {
             tocList.classList.add('toc-collapsed');
             const showMoreContainer = document.createElement('div');
             showMoreContainer.classList.add('gp-toc-show-more-container');
+
             const showMoreButton = document.createElement('button');
-            showMoreButton.innerHTML = 'Show more <span class="arrow down"></span>';
+            showMoreButton.innerHTML = '<div>Show more</div><div class="arrow-wrapper"><span class="arrow down"></span></div>';
             showMoreButton.classList.add('gp-toc-show-more-button');
+            showMoreButton.style.display = 'flex';
+
+            const hideButton = document.createElement('button');
+            hideButton.innerHTML = '<div>Hide</div><div class="arrow-wrapper"><span class="arrow up"></span></div>';
+            hideButton.classList.add('gp-toc-hide-button');
+            hideButton.style.display = 'none';
+
             showMoreContainer.appendChild(showMoreButton);
-tocContainer.appendChild(showMoreContainer);
+            showMoreContainer.appendChild(hideButton);
+            tocContainer.appendChild(showMoreContainer);
+
+            const toggleButtons = () => {
+                const isCollapsed = tocList.classList.contains('toc-collapsed');
+                showMoreButton.style.display = isCollapsed ? 'block' : 'none';
+                hideButton.style.display = isCollapsed ? 'none' : 'block';
+            };
 
             showMoreButton.addEventListener('click', function(e) {
                 e.preventDefault();
-                if (tocList.classList.contains('toc-collapsed')) {
-                    tocList.classList.remove('toc-collapsed');
-                    tocList.classList.add('toc-expanded');
-                    showMoreButton.innerHTML = 'Hide <span class="arrow up"></span>';
-                } else {
-                    tocList.classList.remove('toc-expanded');
-                    tocList.classList.add('toc-collapsed');
-                    showMoreButton.innerHTML = 'Show more <span class="arrow down"></span>';
-                }
+                tocList.classList.remove('toc-collapsed');
+                tocList.classList.add('toc-expanded');
+                toggleButtons();
+            });
+
+            hideButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                tocList.classList.remove('toc-expanded');
+                tocList.classList.add('toc-collapsed');
+                toggleButtons();
             });
         }
     } else {
