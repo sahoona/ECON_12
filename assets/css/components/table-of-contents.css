@@ -150,7 +150,6 @@
     font-weight: bold;
     padding: 0.5rem 1rem;
     text-shadow: none;
-    transition: color 0.3s ease;
 }
 
 .gp-toc-show-more-button .arrow {
