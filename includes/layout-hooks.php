@@ -28,9 +28,6 @@ function gp_layout_setup() {
     add_action( 'generate_after_entry_content', 'gp_custom_post_navigation_output', 20 );
 
     add_action( 'generate_before_entry_content', 'gp_featured_image_output', 5 );
-    add_action( 'generate_after_entry_content', 'gp_read_more_btn_output', 1 );
-    add_action( 'generate_after_entry_content', 'gp_add_tags_to_list', 2 );
-    add_action( 'generate_after_entry_content', 'gp_add_star_rating_to_list', 3 );
 
     add_action( 'wp_footer', 'gp_add_footer_elements_and_scripts' );
 }
