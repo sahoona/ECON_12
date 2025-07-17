@@ -91,7 +91,7 @@ function gp_toc_collect_headings($content) {
 
         if (!empty($toc_list_items)) {
             $gp_toc_data['toc_html'] = '<nav id="gp-toc-container" aria-label="Table of Contents" role="navigation">' .
-                        '<h2 class="gp-toc-title">Table of Contents <span class="gp-toc-toggle" aria-label="Toggle table of contents">[Hide]</span></h2>' .
+                        '<h2 class="gp-toc-title">Table of Contents</h2>' .
                         '<ol class="gp-toc-list" role="list">' . $toc_list_items . '</ol>' .
                         '</nav>';
         }
@@ -131,7 +131,7 @@ add_filter('the_content', 'gp_toc_add_ids_to_headings', 15);
 function gp_insert_toc() {
     if (!is_single()) return;
     echo '<nav id="gp-toc-container" aria-label="Table of Contents" role="navigation">' .
-            '<h2 class="gp-toc-title">Table of Contents <span class="gp-toc-toggle" aria-label="Toggle table of contents">[Hide]</span></h2>' .
+            '<h2 class="gp-toc-title">Table of Contents</h2>' .
             '<ol class="gp-toc-list" role="list"></ol>' .
          '</nav>';
 }

@@ -41,8 +41,11 @@
     mask-image: none;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@700&display=swap');
+
 #gp-toc-container .gp-toc-title {
-    font-weight: 600;
+    font-family: 'Geist', sans-serif;
+    font-weight: 700;
     font-size: 1.2em;
     text-align: center;
     margin: 0 auto 1.5em auto;
@@ -53,10 +56,15 @@
     gap: 8px;
 }
 
-#gp-toc-container .gp-toc-toggle {
+#gp-toc-container .gp-toc-title::after {
+    content: '▼';
     font-size: 0.8em;
-    font-weight: 400;
-    color: var(--text-muted);
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+#gp-toc-container .toc-list-hidden + .gp-toc-title::after {
+    transform: rotate(-90deg);
 }
 
 #gp-toc-container .toc-h2-item > a {
@@ -116,17 +124,9 @@
     max-width: 800px !important;
     width: 100% !important;
     text-align: left !important;
-}
-
-#gp-toc-container {
-    width: 90%;
-    max-width: 800px;
-    margin: 2.5em auto;
-    background: var(--bg-secondary);
-    border-top: 3px solid var(--border-primary);
-    border-bottom: 3px solid var(--border-primary);
-    padding: 2em;
-    border-radius: 0;
+    background: none;
+    border: none;
+    padding: 0;
 }
 
 .toc-list-hidden {
@@ -148,17 +148,15 @@
 
 .gp-toc-show-more-button {
     cursor: pointer;
-    border: 1px solid var(--accent-color);
-    background: var(--accent-color);
-    color: white;
+    border: none;
+    background: none;
+    color: var(--text-muted);
     font-weight: bold;
     padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
+    transition: color 0.3s;
 }
 
 .gp-toc-show-more-button:hover {
-    background: var(--bg-secondary);
     color: var(--accent-color);
 }
 
@@ -191,8 +189,3 @@ div#gp-toc-container > ol.gp-toc-list > li.toc-heading-level-2:not(:has(> ol)) {
     display: block !important;
 }
 
-html.dark-mode-active #gp-toc-container {
-    background-color: #242526 !important;
-    border: 1px solid #3e4042 !important;
-    transition: background-color var(--default-transition-duration) var(--default-transition-timing-function), border-color var(--default-transition-duration) var(--default-transition-timing-function);
-}
