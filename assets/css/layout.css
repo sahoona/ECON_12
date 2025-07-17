@@ -89,9 +89,9 @@
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    width: 48px !important;
-    height: 48px !important;
-    min-width: 48px !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
     border-radius: 50% !important;
     cursor: pointer;
     transition: all 0.2s ease !important;
@@ -99,6 +99,8 @@
     box-sizing: border-box !important;
     position: relative;
     font-weight: normal !important;
+    background-color: #343a40 !important;
+    color: #ffffff !important;
 }
 
 .gp-copy-url-btn.copied,
@@ -119,19 +121,11 @@
 
 .gp-copy-url-btn::before,
 .social-share-btn.copy-link-icon-bottom::before {
-    content: '';
-    display: block;
-    width: 22px;
-    height: 22px;
-    background-color: currentColor;
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath d='M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.72'/%3E%3Cpath d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.72-1.72'/%3E%3C/svg%3E");
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath d='M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.72'/%3E%3Cpath d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.72-1.72'/%3E%3C/svg%3E");
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    mask-position: center;
-    -webkit-mask-size: contain;
-    mask-size: contain;
+    content: 'U';
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #ffffff;
 }
 
 .gp-copy-url-btn:hover,
@@ -528,8 +522,8 @@ html.dark-mode-active .comment-form-comment textarea:focus {
 }
 
 html.dark-mode-active .gp-copy-url-btn {
-    background-color: var(--bg-tertiary) !important;
-    color: var(--text-primary) !important;
+    background-color: #343a40 !important;
+    color: #ffffff !important;
     border: none !important;
     border-width: 0 !important;
     border-style: none !important;
@@ -539,9 +533,9 @@ html.dark-mode-active .gp-copy-url-btn {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    width: 48px !important;
-    height: 48px !important;
-    min-width: 48px !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
     border-radius: 50% !important;
     cursor: pointer;
     transition: all 0.2s ease !important;
